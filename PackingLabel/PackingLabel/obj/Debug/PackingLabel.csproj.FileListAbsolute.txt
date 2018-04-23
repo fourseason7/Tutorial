@@ -1,0 +1,14 @@
+c:\users\fourseason7\source\repos\PackingLabel\PackingLabel\obj\Debug\PackingLabel.frmPackingLabel.resources
+c:\users\fourseason7\source\repos\PackingLabel\PackingLabel\obj\Debug\PackingLabel.Properties.Resources.resources
+c:\users\fourseason7\source\repos\PackingLabel\PackingLabel\obj\Debug\PackingLabel.csproj.GenerateResource.cache
+c:\users\fourseason7\source\repos\PackingLabel\PackingLabel\obj\Debug\PackingLabel.csproj.CoreCompileInputs.cache
+c:\users\fourseason7\source\repos\PackingLabel\PackingLabel\bin\Debug\PackingLabel.exe.config
+c:\users\fourseason7\source\repos\PackingLabel\PackingLabel\bin\Debug\PackingLabel.exe
+c:\users\fourseason7\source\repos\PackingLabel\PackingLabel\bin\Debug\PackingLabel.pdb
+c:\users\fourseason7\source\repos\PackingLabel\PackingLabel\bin\Debug\MaterialSkin.dll
+c:\users\fourseason7\source\repos\PackingLabel\PackingLabel\obj\Debug\PackingLabel.csprojResolveAssemblyReference.cache
+c:\users\fourseason7\source\repos\PackingLabel\PackingLabel\obj\Debug\PackingLabel.csproj.CopyComplete
+c:\users\fourseason7\source\repos\PackingLabel\PackingLabel\obj\Debug\PackingLabel.exe
+c:\users\fourseason7\source\repos\PackingLabel\PackingLabel\obj\Debug\PackingLabel.pdb
+c:\users\fourseason7\source\repos\PackingLabel\PackingLabel\bin\Debug\LTSolutions.mdf
+c:\users\fourseason7\source\repos\PackingLabel\PackingLabel\bin\Debug\LTSolutions_log.ldf
