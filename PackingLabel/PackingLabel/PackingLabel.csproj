@@ -75,8 +75,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LTSolutionsDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Print2LPT.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RawPrinterHelper.cs" />
     <EmbeddedResource Include="frmPackingLabel.resx">
       <DependentUpon>frmPackingLabel.cs</DependentUpon>
     </EmbeddedResource>

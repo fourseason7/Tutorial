@@ -12,3 +12,15 @@ c:\users\fourseason7\source\repos\PackingLabel\PackingLabel\obj\Debug\PackingLab
 c:\users\fourseason7\source\repos\PackingLabel\PackingLabel\obj\Debug\PackingLabel.pdb
 c:\users\fourseason7\source\repos\PackingLabel\PackingLabel\bin\Debug\LTSolutions.mdf
 c:\users\fourseason7\source\repos\PackingLabel\PackingLabel\bin\Debug\LTSolutions_log.ldf
+D:\01. Project\GitHub\Tutorial\PackingLabel\PackingLabel\bin\Debug\PackingLabel.exe.config
+D:\01. Project\GitHub\Tutorial\PackingLabel\PackingLabel\obj\Debug\PackingLabel.exe
+D:\01. Project\GitHub\Tutorial\PackingLabel\PackingLabel\obj\Debug\PackingLabel.pdb
+D:\01. Project\GitHub\Tutorial\PackingLabel\PackingLabel\bin\Debug\LTSolutions.mdf
+D:\01. Project\GitHub\Tutorial\PackingLabel\PackingLabel\bin\Debug\LTSolutions_log.ldf
+D:\01. Project\GitHub\Tutorial\PackingLabel\PackingLabel\bin\Debug\PackingLabel.exe
+D:\01. Project\GitHub\Tutorial\PackingLabel\PackingLabel\bin\Debug\PackingLabel.pdb
+D:\01. Project\GitHub\Tutorial\PackingLabel\PackingLabel\bin\Debug\MaterialSkin.dll
+D:\01. Project\GitHub\Tutorial\PackingLabel\PackingLabel\obj\Debug\PackingLabel.csprojResolveAssemblyReference.cache
+D:\01. Project\GitHub\Tutorial\PackingLabel\PackingLabel\obj\Debug\PackingLabel.frmPackingLabel.resources
+D:\01. Project\GitHub\Tutorial\PackingLabel\PackingLabel\obj\Debug\PackingLabel.Properties.Resources.resources
+D:\01. Project\GitHub\Tutorial\PackingLabel\PackingLabel\obj\Debug\PackingLabel.csproj.GenerateResource.Cache
