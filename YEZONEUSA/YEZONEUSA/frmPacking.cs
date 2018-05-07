@@ -18,9 +18,12 @@ namespace YEZONEUSA
 {
     public partial class frmPacking : Form
     {
+        SqlConnection con = new SqlConnection(Global.ConString);
         DataSet dataSet = new DataSet();
         SqlDataAdapter dataAdapter = new SqlDataAdapter();
         DataTable dataTable = new DataTable();
+
+        string procType = string.Empty;
 
         public void InitializeFocusedControls()
         {
@@ -100,6 +103,18 @@ namespace YEZONEUSA
 
                 }
             }
+        }
+        public void RetrieveData()
+        {
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select * from tblPacking";
+            cmd.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            gcPacking.DataSource = dt;
+
         }
         public struct _ShipBoxLable
         {
@@ -299,6 +314,13 @@ namespace YEZONEUSA
 
         private void frmPacking_Load(object sender, EventArgs e)
         {
+
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+            con.Open();
+
             datePacking.EditValue = DateTime.Now;
             Edit(false);
 
@@ -350,18 +372,7 @@ namespace YEZONEUSA
             try
             {
                 Edit(true);
-
-                //string strItem = string.Empty;
-                //int intQuantity = 0;
-                //string strPO = string.Empty;
-                //string strItemStatus = string.Empty;
-                //string strPackingDate = string.Empty;
-
-                //strItem = txtItem.EditValue.ToString();
-                //intQuantity = Convert.ToInt16(txtQuantity.EditValue.ToString());
-                //strItemStatus = txtItem.EditValue.ToString();
-                //strPackingDate = Convert.ToDateTime(datePacking.EditValue).ToString("MM-dd-yyyy");
-
+                procType = "NEW";
 
                 txtItem.Focus();
             }
@@ -396,56 +407,48 @@ namespace YEZONEUSA
             {
                 Edit(false);
 
-                //ResetDataTable(dataTable, Global.ConString);
+                //string insertString = @"insert into tblPacking(ItemNo, Quantity, PONo, Status, PackingDate, HostName, CreateDate, ModifyDate)
+                //                        values(@itemNo, @quantity, @poNo, @status, @packingDate, HOST_NAME(), GETDATE(), GETDATE())";
+                //SqlCommand insertCommand = new SqlCommand(insertString);
+                //insertCommand.Parameters.Add("@itemNo", SqlDbType.NVarChar, 25).Value = "TEST";
+                //insertCommand.Parameters.Add("@quantity", SqlDbType.Int).Value = 10;
+                //insertCommand.Parameters.Add("@poNo", SqlDbType.NVarChar, 25).Value = "CVE043018-001";
+                //insertCommand.Parameters.Add("@status", SqlDbType.NVarChar, 100).Value = "GOOD";
 
-                //DataTable table = new DataTable();
+                //insertCommand.Parameters.Add("@packingDate", SqlDbType.DateTime).Value = Convert.ToDateTime("04/30/2018");
+                //InsertUpdate(dataTable, Global.ConString, insertCommand);
 
-                //dataTable.Clear();
+                string itemNo = txtItem.EditValue.ToString();
+                int quantity = Convert.ToInt16(txtQuantity.EditValue.ToString());
+                string poNo = txtPO.EditValue.ToString();
+                String itemStatus = txtItemStatus.EditValue.ToString();
+                DateTime packingDate = Convert.ToDateTime(datePacking.EditValue.ToString());
+                string hostName = Environment.MachineName.ToString();
+                DateTime createDate = DateTime.Now;
+                DateTime modifiyDate = DateTime.Now;
 
-                string insertString = @"insert into tblPacking(ItemNo, Quantity, PONo, Status, PackingDate, HostName, CreateDate, ModifyDate)
-                                        values(@itemNo, @quantity, @poNo, @status, @packingDate, HOST_NAME(), GETDATE(), GETDATE())";
-                SqlCommand insertCommand = new SqlCommand(insertString);
-                insertCommand.Parameters.Add("@itemNo", SqlDbType.NVarChar, 25).Value = "TEST";
-                insertCommand.Parameters.Add("@quantity", SqlDbType.Int).Value = 10;
-                insertCommand.Parameters.Add("@poNo", SqlDbType.NVarChar, 25).Value = "CVE043018-001";
-                insertCommand.Parameters.Add("@status", SqlDbType.NVarChar, 100).Value = "GOOD";
-
-                insertCommand.Parameters.Add("@packingDate", SqlDbType.DateTime).Value = Convert.ToDateTime("04/30/2018");
-                InsertUpdate(dataTable, Global.ConString, insertCommand);
-
-                //try
-                //{
-                //    using (SqlConnection conn = new SqlConnection(Global.ConString))
-                //    {
-                //        using (SqlCommand insertCommand = new SqlCommand(insertString))
-                //        {
-                //            insertCommand.Parameters.Add("@itemNo", SqlDbType.NVarChar, 25).Value = "TEST";
-                //            insertCommand.Parameters.Add("@quantity", SqlDbType.Int).Value = 10;
-                //            insertCommand.Parameters.Add("@poNo", SqlDbType.NVarChar, 25).Value = "CVE043018-001";
-                //            insertCommand.Parameters.Add("@status", SqlDbType.NVarChar, 100).Value = "GOOD";
-
-                //            insertCommand.Parameters.Add("@packingDate", SqlDbType.DateTime).Value = Convert.ToDateTime("04/30/2018");
-
-                //            conn.Open();
-                //            insertCommand.CommandType = CommandType.Text;
-                //            insertCommand.ExecuteNonQuery();
-                //        }
-                //    }
-
-                //}
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show(ex.Message, "Message!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    return;
-                //    //throw;
-                //}
+                switch (procType)
+                {
+                    case "NEW":
+                        string text = @"
+                                        insert into tblPacking(ItemNo, Quantity, PONo, Status, PackingDate, HostName, CreateDate, ModifyDate)
+                                        values ('" + itemNo + "', " + quantity + ", '" + poNo + "', '" + itemStatus + "', '" + packingDate + "', '" + hostName + "', '" + createDate + "', '" + modifiyDate + "')";
+                        SqlCommand insertCommand = con.CreateCommand();
+                        insertCommand.CommandType = CommandType.Text;
+                        insertCommand.CommandText = text;
+                        insertCommand.ExecuteNonQuery();
+                        break;
+                    default:
+                        break;
+                }
 
 
-                string queryString = "select * from tblPacking";
-                SqlCommand selectCommand = new SqlCommand(queryString);
-                ShowDataTable(dataTable, Global.ConString, selectCommand);
-                gcPacking.DataSource = null;
-                gcPacking.DataSource = dataTable;
+                //string queryString = "select * from tblPacking";
+                //SqlCommand selectCommand = new SqlCommand(queryString);
+                //ShowDataTable(dataTable, Global.ConString, selectCommand);
+                //gcPacking.DataSource = null;
+                //gcPacking.DataSource = dataTable;
+                RetrieveData();
 
                 //dataGridView1.Refresh();
                 txtItem.Focus();

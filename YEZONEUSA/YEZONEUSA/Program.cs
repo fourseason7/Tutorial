@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace YEZONEUSA
 {
@@ -31,6 +32,8 @@ namespace YEZONEUSA
             string connString = string.Empty;
             if (PreCheckDatabase())
             {
+
+                Global.ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new frmPacking());
