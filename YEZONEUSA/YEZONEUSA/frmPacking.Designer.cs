@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPacking));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.txtID = new DevExpress.XtraEditors.TextEdit();
             this.chkSavePrint = new DevExpress.XtraEditors.CheckEdit();
@@ -234,6 +235,7 @@
             // 
             this.gvPacking.GridControl = this.gcPacking;
             this.gvPacking.Name = "gvPacking";
+            this.gvPacking.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gvPacking_RowClick);
             this.gvPacking.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gvPacking_FocusedRowChanged);
             // 
             // txtSearch
@@ -243,6 +245,7 @@
             this.txtSearch.Size = new System.Drawing.Size(864, 20);
             this.txtSearch.StyleController = this.layoutControl1;
             this.txtSearch.TabIndex = 0;
+            this.txtSearch.EditValueChanged += new System.EventHandler(this.txtSearch_EditValueChanged);
             // 
             // lblShipper
             // 
@@ -319,6 +322,7 @@
             this.txtItem.Name = "txtItem";
             this.txtItem.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtItem.Properties.Appearance.Options.UseFont = true;
+            this.txtItem.Properties.Mask.EditMask = "\\\\p{Lu}+";
             this.txtItem.Size = new System.Drawing.Size(279, 22);
             this.txtItem.StyleController = this.layoutControl1;
             this.txtItem.TabIndex = 100;
@@ -606,6 +610,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 683);
             this.Controls.Add(this.layoutControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmPacking";
             this.Text = "Packing";
             this.Load += new System.EventHandler(this.frmPacking_Load);

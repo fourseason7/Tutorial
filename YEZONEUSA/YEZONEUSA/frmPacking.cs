@@ -20,6 +20,25 @@ namespace YEZONEUSA
     public partial class frmPacking : Form
     {
         SqlConnection con = new SqlConnection(Global.ConString);
+        public static int capacity = 512;
+
+        // Write & Read INI file
+        [DllImport("kernel32", CharSet = CharSet.Unicode)]
+        private static extern int GetPrivateProfileString(string section, string key,
+        string defaultValue, StringBuilder value, int size, string filePath);
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
+        static extern int GetPrivateProfileString(string section, string key, string defaultValue,
+        [In, Out]char[] value, int size, string filePath);
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
+        private static extern int GetPrivateProfileSection(string section, IntPtr keyValue,
+        int size, string filePath);
+
+        [DllImport("kernel32", CharSet = CharSet.Unicode, SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool WritePrivateProfileString(string section, string key,
+        string value, string filePath);
 
         public void InitializeFocusedControls()
         {
@@ -56,6 +75,7 @@ namespace YEZONEUSA
         }
         public void Reset()
         {
+            txtID.EditValue = string.Empty;
             txtItem.EditValue = string.Empty;
             txtQuantity.EditValue = string.Empty;
             txtPO.EditValue = string.Empty;
@@ -63,11 +83,66 @@ namespace YEZONEUSA
 
             datePacking.EditValue = GetSystemDate();
         }
+        public Boolean SaveValidate()
+        {
+            Boolean blnRtnValue = true;
+            string retMessage = string.Empty;
+            if (string.IsNullOrEmpty(txtItem.Text) && blnRtnValue)
+            {
+                retMessage = "Please, check Item#!";
+                txtItem.Focus();
+                blnRtnValue = false;
+            }
+            if (string.IsNullOrEmpty(txtPO.Text) && blnRtnValue)
+            {
+                retMessage = "Please, check P/O#!";
+                txtPO.Focus();
+                blnRtnValue = false;
+            }
+            if (string.IsNullOrEmpty(txtItemStatus.Text) && blnRtnValue)
+            {
+                retMessage = "Please, check Status!";
+                txtItemStatus.Focus();
+                blnRtnValue = false;
+            }
+            if (blnRtnValue == false)
+            {
+                MessageBox.Show(retMessage, "Validation Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return blnRtnValue;
+        }
         public void RetrieveData()
         {
+            Reset();
+            string searchValue = "%";
+            try
+            {
+                searchValue = txtSearch.EditValue.ToString();
+                if (string.IsNullOrEmpty(searchValue))
+                {
+                    searchValue = "%";
+                }
+            }
+            catch (Exception)
+            {
+                //throw;
+            }
+
+
+            string sqlScripts = @"select * " + "\r\n" +
+                                "  from tblPacking" + "\r\n" +
+                                " where ItemNo like '%' + '" + searchValue + "' + '%'" + "\r\n" +
+                                "    or PONo like '%' + '" + searchValue + "' + '%'" + "\r\n" +
+                                "	or Status like '%' + '" + searchValue + "' + '%'" + "\r\n" +
+                                " Order by PackingId Desc";
+
+
+
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from tblPacking";
+            //cmd.CommandText = @"select * from tblPacking";
+            cmd.CommandText = sqlScripts;
+
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -76,13 +151,12 @@ namespace YEZONEUSA
 
 
             // hide columns
-            //gvPacking.Columns["PackingId"].Visible = false;
-            //gvPacking.Columns["HostName"].Visible = false;
-            //gvPacking.Columns["CreateDate"].Visible = false;
-            //gvPacking.Columns["ModifyDate"].Visible = false;
+            gvPacking.Columns["PackingId"].Visible = false;
+            gvPacking.Columns["HostName"].Visible = false;
+            gvPacking.Columns["CreateDate"].Visible = false;
+            gvPacking.Columns["ModifyDate"].Visible = false;
 
             gvPacking.OptionsBehavior.ReadOnly = true;
-
         }
         public struct _ShipBoxLable
         {
@@ -93,6 +167,20 @@ namespace YEZONEUSA
             public string Shipper;
             public string PONumber;
         }
+
+        public static string ReadValue(string section, string key, string filePath, string defaultValue = "")
+        {
+            var value = new StringBuilder(capacity);
+            GetPrivateProfileString(section, key, defaultValue, value, value.Capacity, filePath);
+            return value.ToString();
+        }
+        //You can write values with the following code.
+        public static bool WriteValue(string section, string key, string value, string filePath)
+        {
+            bool result = WritePrivateProfileString(section, key, value, filePath);
+            return result;
+        }
+
         public string GetDefaultPrinter()
         {
             PrinterSettings settings = new PrinterSettings();
@@ -269,6 +357,7 @@ namespace YEZONEUSA
         }
         private void Edit(bool value)
         {
+            txtID.Enabled = false;
             txtItem.Enabled = value;
             txtQuantity.Enabled = value;
             txtPO.Enabled = value;
@@ -282,6 +371,15 @@ namespace YEZONEUSA
 
         private void frmPacking_Load(object sender, EventArgs e)
         {
+            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            this.Text = string.Format("{0}[Ver.{1}]", this.Text, version.ToString());
+
+            string iniFileName = string.Format("{0}\\Setting.INI", Application.StartupPath.ToString());
+            string value = ReadValue("Printer", "LabelPrinter", iniFileName, "");
+            if (value != null && value != "")
+            {
+                lblPrinter.Text = value;
+            }
 
             if (con.State == ConnectionState.Open)
             {
@@ -306,7 +404,14 @@ namespace YEZONEUSA
                 {
                     string prtName = prtdig.PrinterSettings.PrinterName;
                     if (prtName.ToUpper().Contains("ZEBRA") || prtName.ToUpper().Contains("ZDESIGNER"))
-                        { lblPrinter.Text = prtName; }
+                    {
+                        lblPrinter.Text = prtName;
+                        string value = prtName;
+                        string iniFileName = string.Format("{0}\\Setting.INI", Application.StartupPath.ToString());
+
+                        bool blnReturnValue = WriteValue("Printer", "LabelPrinter", value, iniFileName);
+
+                    }
                     else
                         {MessageBox.Show("Choose other printer!(Zebra or ZDesinger)", "message");
                     }
@@ -354,6 +459,15 @@ namespace YEZONEUSA
         {
             try
             {
+
+                if (txtItem.Enabled == false)
+                {
+                    return;
+                }
+                if (SaveValidate() == false)
+                {
+                    return;
+                }
                 string sqlScripts = string.Empty;
 
                 Edit(false);
@@ -405,6 +519,9 @@ namespace YEZONEUSA
                     // print 
                     btnPrint.PerformClick();
                 }
+                Reset();
+                RetrieveData();
+                txtItem.Focus();
             }
             catch (Exception ex)
             {
@@ -413,9 +530,9 @@ namespace YEZONEUSA
             }
             finally
             {
-                Reset();
-                RetrieveData();
-                txtItem.Focus();
+                //Reset();
+                //RetrieveData();
+                //txtItem.Focus();
             }
         }
 
@@ -461,8 +578,11 @@ namespace YEZONEUSA
             }
             try
             {
-                //txtID.EditValue = gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "PackingID").ToString();
-                var PackingID = gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "PackingID");
+                //DataRow row = gvPacking.GetDataRow(gvPacking.FocusedRowHandle);
+                //var packingID = Convert.ToInt16(row[0]);
+                ////txtID.EditValue = gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "PackingID").ToString();
+                var packingID = Convert.ToInt16(gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "PackingId"));
+                txtID.EditValue = packingID.ToString();
                 txtItem.EditValue = gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "ItemNo").ToString();
                 txtQuantity.EditValue = gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "Quantity").ToString();
                 txtPO.EditValue = gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "PONo").ToString();
@@ -480,17 +600,75 @@ namespace YEZONEUSA
         {
             try
             {
+                string itemID = string.Empty;
+                string itemNo = string.Empty;
+                try
+                {
+                    itemID = txtID.EditValue.ToString();
+                    itemNo = txtItem.EditValue.ToString();
+                }
+                catch (Exception)
+                {
+                    //itemID = "";
+                    //throw;
+                    return;
+                }
 
+                DialogResult dialogResult = MessageBox.Show("Do you want to delete that Item# is " + itemNo + "?", "Delete!", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (dialogResult == DialogResult.No)
+                {
+                    return;
+                }
+
+                string sqlScripts = "delete from tblPacking where PackingId = " + itemID + ";";
+
+                SqlCommand cmd = con.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = sqlScripts;
+                cmd.ExecuteNonQuery();
+                
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message.ToString(), "Delete Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //throw;
             }
             finally
             {
                 Reset();
                 RetrieveData();
+            }
+        }
+
+        private void txtSearch_EditValueChanged(object sender, EventArgs e)
+        {
+            Edit(false);
+            RetrieveData();
+        }
+
+        private void gvPacking_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            if (gvPacking.RowCount == 0)
+            {
+                return;
+            }
+            try
+            {
+                //DataRow row = gvPacking.GetDataRow(gvPacking.FocusedRowHandle);
+                //var packingID = Convert.ToInt16(row[0]);
+                ////txtID.EditValue = gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "PackingID").ToString();
+                var packingID = Convert.ToInt16(gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "PackingId"));
+                txtID.EditValue = packingID.ToString();
+                txtItem.EditValue = gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "ItemNo").ToString();
+                txtQuantity.EditValue = gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "Quantity").ToString();
+                txtPO.EditValue = gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "PONo").ToString();
+                txtItemStatus.EditValue = gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "Status").ToString();
+                datePacking.EditValue = Convert.ToDateTime(gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "PackingDate").ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //throw;
             }
         }
     }
