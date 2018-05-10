@@ -61,6 +61,7 @@
             this.txtLoginID.Properties.Appearance.Options.UseFont = true;
             this.txtLoginID.Size = new System.Drawing.Size(186, 26);
             this.txtLoginID.TabIndex = 1;
+            this.txtLoginID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLoginID_KeyDown);
             // 
             // txtPassword
             // 
@@ -71,6 +72,7 @@
             this.txtPassword.Properties.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(186, 26);
             this.txtPassword.TabIndex = 2;
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // labelControl1
             // 
@@ -128,12 +130,12 @@
             this.btnCancel.Size = new System.Drawing.Size(144, 53);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(574, 291);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnLogin);
@@ -142,9 +144,15 @@
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtLoginID);
             this.Controls.Add(this.pictureEdit1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmLogin";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.TopMost = true;
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLoginID.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();

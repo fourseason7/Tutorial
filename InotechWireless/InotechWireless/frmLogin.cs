@@ -17,13 +17,13 @@ namespace InotechWireless
     public partial class frmLogin : XtraForm
     {
 
-        SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SSD;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        SqlConnection con = new SqlConnection(@"Data Source=.;Initial Catalog=InoTechSSD;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=True");
         public frmLogin()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void frmLogin_Load(object sender, EventArgs e)
         {
             if (con.State == ConnectionState.Open)
             {
@@ -52,6 +52,7 @@ namespace InotechWireless
             if (intRowCount == 0)
             {
                 MessageBox.Show("This Username and password does not match!", "Login Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtLoginID.Focus();
             }
             else
             {
@@ -59,6 +60,59 @@ namespace InotechWireless
                 frmMain fm = new frmMain();
                 fm.Show();
             }
+        }
+
+        private void txtLoginID_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Return)
+                {
+                    if (string.IsNullOrEmpty(txtLoginID.Text))
+                    {
+                        txtLoginID.Focus();
+                    }
+                    else
+                    {
+                        txtPassword.Focus();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Return)
+                {
+                    if (string.IsNullOrEmpty(txtPassword.Text))
+                    {
+                        txtPassword.Focus();
+                    }
+                    else
+                    {
+                        //btnLogin.Focus();
+                        btnLogin.PerformClick();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

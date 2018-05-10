@@ -52,7 +52,8 @@ namespace InotechWireless
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            //this.Close();
+            Application.Exit();
         }
 
         private void CutToolStripMenuItem_Click(object sender, EventArgs e)
