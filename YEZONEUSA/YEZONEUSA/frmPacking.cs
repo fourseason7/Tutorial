@@ -19,7 +19,9 @@ namespace YEZONEUSA
 {
     public partial class frmPacking : Form
     {
-        SqlConnection con = new SqlConnection(Global.ConString);
+        //SqlConnection con = new SqlConnection(Global.ConString);
+        SqlConnection con = new SqlConnection(Properties.Settings.Default.connectionString);
+
         public static int capacity = 512;
 
         // Write & Read INI file
@@ -373,6 +375,9 @@ namespace YEZONEUSA
         {
             var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
             this.Text = string.Format("{0}[Ver.{1}]", this.Text, version.ToString());
+
+
+
 
             string iniFileName = string.Format("{0}\\Setting.INI", Application.StartupPath.ToString());
             string value = ReadValue("Printer", "LabelPrinter", iniFileName, "");

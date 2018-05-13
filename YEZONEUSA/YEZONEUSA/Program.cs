@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 
+
 namespace YEZONEUSA
 {
     static class Global
@@ -34,6 +35,7 @@ namespace YEZONEUSA
             {
 
                 Global.ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new frmPacking());
@@ -61,6 +63,7 @@ namespace YEZONEUSA
                 }
 
                 Global.ConString = sqlConnection.ConnectionString;
+
 
                 Boolean blnRtnValue = false;
                 blnRtnValue = LocalDB.TableExists(sqlConnection, "YEZONEUSA", "tblPacking", retMessage);

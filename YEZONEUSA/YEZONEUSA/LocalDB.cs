@@ -41,7 +41,7 @@ namespace YEZONEUSA
                 }
 
                 // Open newly created, or old database.
-                //Data Source = (LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\LTSolutions.mdf;Integrated Security = True
+                //Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename =| DataDirectory |\LTSolutions.mdf; Integrated Security = True
                 string connectionString = String.Format(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDBFileName={1};Initial Catalog={0};Integrated Security=True;", dbName, dbFileName);
                 //string connectionString = String.Format(@"Data Source=(LocalDB)\v11.0;AttachDBFileName={1};Initial Catalog={0};Integrated Security=True;", dbName, dbFileName);
                 SqlConnection connection = new SqlConnection(connectionString);
@@ -50,13 +50,13 @@ namespace YEZONEUSA
             }
             catch (SqlException ex)
             {
-                retMessage = ex.Message;
+                retMessage = ex.Message.ToString();
                 //MessageBox.Show(ex.Message, "Message!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
             catch (Exception ex)
             {
-                retMessage = ex.Message;
+                retMessage = ex.Message.ToString();
                 return null;
                 //MessageBox.Show(ex.Message, "Message!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //return false;
