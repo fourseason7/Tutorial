@@ -34,7 +34,8 @@ namespace YEZONEUSA
             if (PreCheckDatabase())
             {
 
-                Global.ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+                //Global.ConString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);

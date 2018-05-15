@@ -19,8 +19,8 @@ namespace YEZONEUSA
 {
     public partial class frmPacking : Form
     {
-        //SqlConnection con = new SqlConnection(Global.ConString);
-        SqlConnection con = new SqlConnection(Properties.Settings.Default.connectionString);
+        SqlConnection con = new SqlConnection(Global.ConString);
+        //SqlConnection con = new SqlConnection(Properties.Settings.Default.connectionString);
 
         public static int capacity = 512;
 
