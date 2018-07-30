@@ -98,7 +98,7 @@
             this.groupControl4.Location = new System.Drawing.Point(12, 447);
             this.groupControl4.Name = "groupControl4";
             this.groupControl4.Size = new System.Drawing.Size(776, 179);
-            this.groupControl4.TabIndex = 0;
+            this.groupControl4.TabIndex = 1;
             this.groupControl4.Text = "groupControl4";
             // 
             // lblPrinterName
@@ -122,6 +122,7 @@
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(737, 51);
             this.btnPrint.TabIndex = 1;
+            this.btnPrint.TabStop = false;
             this.btnPrint.Text = "Print QR Label";
             // 
             // btnPrinter
@@ -132,6 +133,7 @@
             this.btnPrinter.Name = "btnPrinter";
             this.btnPrinter.Size = new System.Drawing.Size(100, 34);
             this.btnPrinter.TabIndex = 0;
+            this.btnPrinter.TabStop = false;
             this.btnPrinter.Text = "Printer..";
             // 
             // groupControl1
@@ -160,7 +162,7 @@
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(776, 431);
-            this.groupControl1.TabIndex = 4;
+            this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "groupControl1";
             // 
             // labelControl13
@@ -173,7 +175,7 @@
             this.labelControl13.Location = new System.Drawing.Point(297, 220);
             this.labelControl13.Name = "labelControl13";
             this.labelControl13.Size = new System.Drawing.Size(463, 40);
-            this.labelControl13.TabIndex = 20;
+            this.labelControl13.TabIndex = 0;
             this.labelControl13.Text = "Unique ID assigned by suppliers to their subordinate suppliers (Option *)";
             // 
             // labelControl12
@@ -186,7 +188,7 @@
             this.labelControl12.Location = new System.Drawing.Point(297, 164);
             this.labelControl12.Name = "labelControl12";
             this.labelControl12.Size = new System.Drawing.Size(463, 40);
-            this.labelControl12.TabIndex = 19;
+            this.labelControl12.TabIndex = 0;
             this.labelControl12.Text = "Total item quantity per shipment";
             // 
             // labelControl11
@@ -199,7 +201,7 @@
             this.labelControl11.Location = new System.Drawing.Point(297, 117);
             this.labelControl11.Name = "labelControl11";
             this.labelControl11.Size = new System.Drawing.Size(463, 40);
-            this.labelControl11.TabIndex = 18;
+            this.labelControl11.TabIndex = 0;
             this.labelControl11.Text = "[10-character design loc] && [model identifier] & [color variant, if any] && [_it" +
     "em status]";
             // 
@@ -213,7 +215,7 @@
             this.labelControl10.Location = new System.Drawing.Point(297, 70);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(463, 40);
-            this.labelControl10.TabIndex = 17;
+            this.labelControl10.TabIndex = 0;
             this.labelControl10.Text = "Unique ID assigned by CVE to each supplier";
             // 
             // labelControl9
@@ -226,7 +228,7 @@
             this.labelControl9.Location = new System.Drawing.Point(297, 23);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(463, 40);
-            this.labelControl9.TabIndex = 16;
+            this.labelControl9.TabIndex = 0;
             this.labelControl9.Text = "[3-character project code] && [issue date in YYMMDD format] && [2 or 3 digit seri" +
     "al number]";
             // 
@@ -237,7 +239,7 @@
             this.labelControl8.Location = new System.Drawing.Point(30, 388);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(94, 16);
-            this.labelControl8.TabIndex = 14;
+            this.labelControl8.TabIndex = 0;
             this.labelControl8.Text = "Material Source";
             // 
             // txtSerialNumber
@@ -252,7 +254,7 @@
             this.txtSerialNumber.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtSerialNumber.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtSerialNumber.Size = new System.Drawing.Size(149, 22);
-            this.txtSerialNumber.TabIndex = 13;
+            this.txtSerialNumber.TabIndex = 7;
             // 
             // labelControl7
             // 
@@ -261,7 +263,7 @@
             this.labelControl7.Location = new System.Drawing.Point(38, 329);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(86, 16);
-            this.labelControl7.TabIndex = 12;
+            this.labelControl7.TabIndex = 0;
             this.labelControl7.Text = "Serial Number";
             // 
             // labelControl6
@@ -271,7 +273,7 @@
             this.labelControl6.Location = new System.Drawing.Point(56, 277);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(68, 16);
-            this.labelControl6.TabIndex = 10;
+            this.labelControl6.TabIndex = 0;
             this.labelControl6.Text = "Ship Date";
             // 
             // txtFactoryCode
@@ -282,7 +284,7 @@
             this.txtFactoryCode.Properties.Appearance.Options.UseFont = true;
             this.txtFactoryCode.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtFactoryCode.Size = new System.Drawing.Size(149, 22);
-            this.txtFactoryCode.TabIndex = 9;
+            this.txtFactoryCode.TabIndex = 5;
             // 
             // labelControl5
             // 
@@ -291,7 +293,7 @@
             this.labelControl5.Location = new System.Drawing.Point(43, 232);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(81, 16);
-            this.labelControl5.TabIndex = 8;
+            this.labelControl5.TabIndex = 0;
             this.labelControl5.Text = "Factory Code";
             // 
             // labelControl4
@@ -301,7 +303,7 @@
             this.labelControl4.Location = new System.Drawing.Point(35, 176);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(89, 16);
-            this.labelControl4.TabIndex = 6;
+            this.labelControl4.TabIndex = 0;
             this.labelControl4.Text = "Item Quantity";
             // 
             // txtItemCode
@@ -312,7 +314,7 @@
             this.txtItemCode.Properties.Appearance.Options.UseFont = true;
             this.txtItemCode.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtItemCode.Size = new System.Drawing.Size(149, 22);
-            this.txtItemCode.TabIndex = 5;
+            this.txtItemCode.TabIndex = 3;
             // 
             // labelControl3
             // 
@@ -321,7 +323,7 @@
             this.labelControl3.Location = new System.Drawing.Point(50, 124);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(74, 16);
-            this.labelControl3.TabIndex = 4;
+            this.labelControl3.TabIndex = 0;
             this.labelControl3.Text = "Item Code:";
             // 
             // txtSupplierID
@@ -332,7 +334,7 @@
             this.txtSupplierID.Properties.Appearance.Options.UseFont = true;
             this.txtSupplierID.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSupplierID.Size = new System.Drawing.Size(149, 22);
-            this.txtSupplierID.TabIndex = 3;
+            this.txtSupplierID.TabIndex = 2;
             // 
             // labelControl2
             // 
@@ -341,7 +343,7 @@
             this.labelControl2.Location = new System.Drawing.Point(47, 82);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(77, 16);
-            this.labelControl2.TabIndex = 2;
+            this.labelControl2.TabIndex = 0;
             this.labelControl2.Text = "Supplier ID";
             // 
             // txtPONumber
@@ -378,7 +380,7 @@
             this.txtShipDate.Properties.Mask.EditMask = "";
             this.txtShipDate.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.txtShipDate.Size = new System.Drawing.Size(149, 22);
-            this.txtShipDate.TabIndex = 11;
+            this.txtShipDate.TabIndex = 6;
             // 
             // txtItemQuantity
             // 
@@ -406,7 +408,7 @@
             0,
             0});
             this.txtItemQuantity.Size = new System.Drawing.Size(149, 22);
-            this.txtItemQuantity.TabIndex = 7;
+            this.txtItemQuantity.TabIndex = 4;
             // 
             // txtMaterialSource
             // 
@@ -417,7 +419,7 @@
             this.txtMaterialSource.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtMaterialSource.Size = new System.Drawing.Size(149, 22);
-            this.txtMaterialSource.TabIndex = 15;
+            this.txtMaterialSource.TabIndex = 8;
             // 
             // layoutControlGroup1
             // 

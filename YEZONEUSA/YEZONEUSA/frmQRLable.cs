@@ -19,7 +19,6 @@ namespace YEZONEUSA
 
         private void frmQRLable_Load(object sender, EventArgs e)
         {
-
         }
     }
 }
