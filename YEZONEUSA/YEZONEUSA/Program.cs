@@ -31,9 +31,9 @@ namespace YEZONEUSA
             //if (PreCheckDatabase())
             //{
 
-            //    Application.EnableVisualStyles();
-            //    Application.SetCompatibleTextRenderingDefault(false);
-            //    Application.Run(new frmPacking());
+            //    //Application.EnableVisualStyles();
+            //    //Application.SetCompatibleTextRenderingDefault(false);
+            //    //Application.Run(new frmPacking());
             //}
             //else
             //{
@@ -42,7 +42,7 @@ namespace YEZONEUSA
 
 
             bool firstInstance;
-            using (Mutex mutex = new Mutex(false, "Local\\" + "eSolution for EG2", out firstInstance))
+            using (Mutex mutex = new Mutex(false, "Local\\" + "YEZONEUSA", out firstInstance))
             {
                 if (firstInstance == true)
                 {
@@ -53,7 +53,10 @@ namespace YEZONEUSA
                     //DevExpress.UserSkins.BonusSkins.Register();
                     //UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
                     //DevExpress.Skins.SkinManager.DisableMdiFormSkins();
+
                     Application.Run(new frmMain());
+                    
+                    
                     //frmLogin frm = new frmLogin();
                     //while (frm.ShowDialog() != DialogResult.Yes)
                     //{

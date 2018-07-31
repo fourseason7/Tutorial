@@ -30,6 +30,8 @@
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.txtDarkness = new DevExpress.XtraEditors.SpinEdit();
+            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.lblPrinterName = new DevExpress.XtraEditors.LabelControl();
             this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
             this.btnPrinter = new DevExpress.XtraEditors.SimpleButton();
@@ -54,14 +56,15 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtShipDate = new DevExpress.XtraEditors.DateEdit();
             this.txtItemQuantity = new DevExpress.XtraEditors.SpinEdit();
-            this.txtMaterialSource = new DevExpress.XtraEditors.ComboBoxEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtMaterialSource = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDarkness.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSerialNumber.Properties)).BeginInit();
@@ -72,10 +75,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtShipDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtShipDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtItemQuantity.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaterialSource.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaterialSource.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -85,6 +88,7 @@
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(855, 390, 650, 400);
             this.layoutControl1.Root = this.layoutControlGroup1;
             this.layoutControl1.Size = new System.Drawing.Size(800, 638);
             this.layoutControl1.TabIndex = 0;
@@ -92,6 +96,8 @@
             // 
             // groupControl4
             // 
+            this.groupControl4.Controls.Add(this.txtDarkness);
+            this.groupControl4.Controls.Add(this.labelControl14);
             this.groupControl4.Controls.Add(this.lblPrinterName);
             this.groupControl4.Controls.Add(this.btnPrint);
             this.groupControl4.Controls.Add(this.btnPrinter);
@@ -99,7 +105,47 @@
             this.groupControl4.Name = "groupControl4";
             this.groupControl4.Size = new System.Drawing.Size(776, 179);
             this.groupControl4.TabIndex = 1;
-            this.groupControl4.Text = "groupControl4";
+            this.groupControl4.Text = "Printing";
+            // 
+            // txtDarkness
+            // 
+            this.txtDarkness.EditValue = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.txtDarkness.Location = new System.Drawing.Point(665, 46);
+            this.txtDarkness.Name = "txtDarkness";
+            this.txtDarkness.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDarkness.Properties.Appearance.Options.UseFont = true;
+            this.txtDarkness.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtDarkness.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
+            this.txtDarkness.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.txtDarkness.Properties.MaxValue = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.txtDarkness.Properties.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtDarkness.Properties.NullText = "25";
+            this.txtDarkness.Size = new System.Drawing.Size(75, 22);
+            this.txtDarkness.TabIndex = 0;
+            this.txtDarkness.TabStop = false;
+            // 
+            // labelControl14
+            // 
+            this.labelControl14.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl14.Appearance.Options.UseFont = true;
+            this.labelControl14.Location = new System.Drawing.Point(598, 49);
+            this.labelControl14.Name = "labelControl14";
+            this.labelControl14.Size = new System.Drawing.Size(61, 16);
+            this.labelControl14.TabIndex = 3;
+            this.labelControl14.Text = "Darkness:";
             // 
             // lblPrinterName
             // 
@@ -110,9 +156,8 @@
             this.lblPrinterName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblPrinterName.Location = new System.Drawing.Point(130, 49);
             this.lblPrinterName.Name = "lblPrinterName";
-            this.lblPrinterName.Size = new System.Drawing.Size(620, 19);
+            this.lblPrinterName.Size = new System.Drawing.Size(450, 19);
             this.lblPrinterName.TabIndex = 2;
-            this.lblPrinterName.Text = "ZDesigner GX430t";
             // 
             // btnPrint
             // 
@@ -124,6 +169,7 @@
             this.btnPrint.TabIndex = 1;
             this.btnPrint.TabStop = false;
             this.btnPrint.Text = "Print QR Label";
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // btnPrinter
             // 
@@ -135,6 +181,7 @@
             this.btnPrinter.TabIndex = 0;
             this.btnPrinter.TabStop = false;
             this.btnPrinter.Text = "Printer..";
+            this.btnPrinter.Click += new System.EventHandler(this.btnPrinter_Click);
             // 
             // groupControl1
             // 
@@ -163,7 +210,7 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(776, 431);
             this.groupControl1.TabIndex = 0;
-            this.groupControl1.Text = "groupControl1";
+            this.groupControl1.Text = "QR Information";
             // 
             // labelControl13
             // 
@@ -328,6 +375,7 @@
             // 
             // txtSupplierID
             // 
+            this.txtSupplierID.EditValue = "YZU";
             this.txtSupplierID.Location = new System.Drawing.Point(130, 79);
             this.txtSupplierID.Name = "txtSupplierID";
             this.txtSupplierID.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -410,17 +458,6 @@
             this.txtItemQuantity.Size = new System.Drawing.Size(149, 22);
             this.txtItemQuantity.TabIndex = 4;
             // 
-            // txtMaterialSource
-            // 
-            this.txtMaterialSource.Location = new System.Drawing.Point(130, 385);
-            this.txtMaterialSource.Name = "txtMaterialSource";
-            this.txtMaterialSource.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaterialSource.Properties.Appearance.Options.UseFont = true;
-            this.txtMaterialSource.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtMaterialSource.Size = new System.Drawing.Size(149, 22);
-            this.txtMaterialSource.TabIndex = 8;
-            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -428,7 +465,7 @@
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
             this.layoutControlItem4});
-            this.layoutControlGroup1.Name = "layoutControlGroup1";
+            this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Size = new System.Drawing.Size(800, 638);
             this.layoutControlGroup1.TextVisible = false;
             // 
@@ -450,6 +487,20 @@
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
+            // txtMaterialSource
+            // 
+            this.txtMaterialSource.Location = new System.Drawing.Point(130, 385);
+            this.txtMaterialSource.Name = "txtMaterialSource";
+            this.txtMaterialSource.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaterialSource.Properties.Appearance.Options.UseFont = true;
+            this.txtMaterialSource.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtMaterialSource.Properties.NullText = "";
+            this.txtMaterialSource.Properties.PopupSizeable = false;
+            this.txtMaterialSource.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.txtMaterialSource.Size = new System.Drawing.Size(149, 22);
+            this.txtMaterialSource.TabIndex = 8;
+            // 
             // frmQRLable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -459,10 +510,13 @@
             this.Name = "frmQRLable";
             this.Text = "QR Label for Unit";
             this.Load += new System.EventHandler(this.frmQRLable_Load);
+            this.Shown += new System.EventHandler(this.frmQRLable_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
+            this.groupControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDarkness.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
@@ -474,10 +528,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtShipDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtShipDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtItemQuantity.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaterialSource.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaterialSource.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -505,7 +559,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.DateEdit txtShipDate;
         private DevExpress.XtraEditors.SpinEdit txtItemQuantity;
-        private DevExpress.XtraEditors.ComboBoxEdit txtMaterialSource;
         private DevExpress.XtraEditors.LabelControl lblPrinterName;
         private DevExpress.XtraEditors.SimpleButton btnPrint;
         private DevExpress.XtraEditors.SimpleButton btnPrinter;
@@ -514,5 +567,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.SpinEdit txtDarkness;
+        private DevExpress.XtraEditors.LabelControl labelControl14;
+        private DevExpress.XtraEditors.LookUpEdit txtMaterialSource;
     }
 }

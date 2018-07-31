@@ -143,15 +143,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1066, 51);
+            this.barDockControlTop.Size = new System.Drawing.Size(1008, 51);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 770);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 706);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1066, 23);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1008, 23);
             // 
             // barDockControlLeft
             // 
@@ -159,15 +159,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 51);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 719);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 655);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1066, 51);
+            this.barDockControlRight.Location = new System.Drawing.Point(1008, 51);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 719);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 655);
             // 
             // barSubMenuFile
             // 
@@ -196,8 +196,8 @@
             this.mnuLabelQR});
             this.navBarMainMenu.Location = new System.Drawing.Point(0, 51);
             this.navBarMainMenu.Name = "navBarMainMenu";
-            this.navBarMainMenu.OptionsNavPane.ExpandedWidth = 140;
-            this.navBarMainMenu.Size = new System.Drawing.Size(140, 719);
+            this.navBarMainMenu.OptionsNavPane.ExpandedWidth = 175;
+            this.navBarMainMenu.Size = new System.Drawing.Size(175, 655);
             this.navBarMainMenu.TabIndex = 5;
             this.navBarMainMenu.Text = "navBarControl1";
             this.navBarMainMenu.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarMainMenu_LinkClicked);
@@ -206,6 +206,8 @@
             // 
             this.grpLabel.Caption = "Label Print";
             this.grpLabel.Expanded = true;
+            this.grpLabel.ImageOptions.LargeImage = global::YEZONEUSA.Properties.Resources.label_16x16;
+            this.grpLabel.ImageOptions.SmallImage = global::YEZONEUSA.Properties.Resources.label_16x16;
             this.grpLabel.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.mnuLabelQR),
             new DevExpress.XtraNavBar.NavBarItemLink(this.mnuLabelPacking)});
@@ -213,13 +215,17 @@
             // 
             // mnuLabelQR
             // 
-            this.mnuLabelQR.Caption = "QR Label for Unit";
+            this.mnuLabelQR.Caption = "QR Label";
+            this.mnuLabelQR.ImageOptions.LargeImage = global::YEZONEUSA.Properties.Resources.QR_code_32x32;
+            this.mnuLabelQR.ImageOptions.SmallImage = global::YEZONEUSA.Properties.Resources.QR_code_32x32;
             this.mnuLabelQR.Name = "mnuLabelQR";
             this.mnuLabelQR.Tag = "YEZONEUSA.frmQRLable";
             // 
             // mnuLabelPacking
             // 
             this.mnuLabelPacking.Caption = "Packing Label";
+            this.mnuLabelPacking.ImageOptions.LargeImage = global::YEZONEUSA.Properties.Resources.Packing;
+            this.mnuLabelPacking.ImageOptions.SmallImage = global::YEZONEUSA.Properties.Resources.Packing;
             this.mnuLabelPacking.Name = "mnuLabelPacking";
             this.mnuLabelPacking.Tag = "YEZONEUSA.frmPacking";
             // 
@@ -227,7 +233,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1066, 793);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.navBarMainMenu);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);

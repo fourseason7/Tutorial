@@ -19,8 +19,8 @@ namespace YEZONEUSA
 {
     public partial class frmPacking : Form
     {
-        SqlConnection con = new SqlConnection(Global.ConString);
-        //SqlConnection con = new SqlConnection(Properties.Settings.Default.connectionString);
+        //SqlConnection con = new SqlConnection(Global.ConString);
+        SqlConnection con = new SqlConnection(Properties.Settings.Default.connectionString);
 
         public static int capacity = 512;
 
@@ -151,12 +151,15 @@ namespace YEZONEUSA
             da.Fill(dt);
             gcPacking.DataSource = dt;
 
+            if (dt.Rows.Count > 0)
+            {
+                // hide columns
+                //gvPacking.Columns["PackingId"].Visible = false;
+                //gvPacking.Columns["HostName"].Visible = false;
+                //gvPacking.Columns["CreateDate"].Visible = false;
+                //gvPacking.Columns["ModifyDate"].Visible = false;
+            }
 
-            // hide columns
-            gvPacking.Columns["PackingId"].Visible = false;
-            gvPacking.Columns["HostName"].Visible = false;
-            gvPacking.Columns["CreateDate"].Visible = false;
-            gvPacking.Columns["ModifyDate"].Visible = false;
 
             gvPacking.OptionsBehavior.ReadOnly = true;
         }
@@ -373,8 +376,8 @@ namespace YEZONEUSA
 
         private void frmPacking_Load(object sender, EventArgs e)
         {
-            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-            this.Text = string.Format("{0}[Ver.{1}]", this.Text, version.ToString());
+            //var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            //this.Text = string.Format("{0}[Ver.{1}]", this.Text, version.ToString());
 
 
 

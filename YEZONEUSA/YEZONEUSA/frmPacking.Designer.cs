@@ -285,6 +285,7 @@
             this.txtPO.Name = "txtPO";
             this.txtPO.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPO.Properties.Appearance.Options.UseFont = true;
+            this.txtPO.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtPO.Size = new System.Drawing.Size(486, 22);
             this.txtPO.StyleController = this.layoutControl1;
             this.txtPO.TabIndex = 102;
@@ -322,6 +323,7 @@
             this.txtItem.Name = "txtItem";
             this.txtItem.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtItem.Properties.Appearance.Options.UseFont = true;
+            this.txtItem.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtItem.Properties.Mask.EditMask = "\\\\p{Lu}+";
             this.txtItem.Size = new System.Drawing.Size(279, 22);
             this.txtItem.StyleController = this.layoutControl1;

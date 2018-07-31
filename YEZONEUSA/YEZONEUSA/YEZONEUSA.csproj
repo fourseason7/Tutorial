@@ -188,7 +188,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Packing.ico" />
+    <None Include="Resources\label_16x16.ico" />
+    <None Include="Resources\label_32x32.ico" />
+    <None Include="Resources\QR_code_32x321.ico" />
+    <None Include="packingpng.png" />
+    <None Include="Packing.png" />
     <Content Include="packingpng.ico" />
+    <None Include="Resources\QR_code_32x32.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
