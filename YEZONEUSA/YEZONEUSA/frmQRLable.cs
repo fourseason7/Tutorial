@@ -283,21 +283,34 @@ namespace YEZONEUSA
                     {
                         qRCode.SerialNumber = 1;
                     }
-
                     zpl = zpl + "^XA";
                     zpl = zpl + Environment.NewLine + "^MMT";
                     zpl = zpl + Environment.NewLine + "^PW250";
                     zpl = zpl + Environment.NewLine + "^LL0500";
-                    zpl = zpl + Environment.NewLine + "^LH0,20";
+                    zpl = zpl + Environment.NewLine + "^LH0,10";
                     zpl = zpl + Environment.NewLine + "^LS0";
                     zpl = zpl + Environment.NewLine + string.Format("~SD{0}", Convert.ToInt16(txtDarkness.EditValue.ToString()));
-                    zpl = zpl + Environment.NewLine + string.Format("^FO0,20^BQ,3,3^FDMA,{0}^FS", QRCode);
-                    zpl = zpl + Environment.NewLine + string.Format("^FO100,35^A0N,20,20^FD{0}^FS", qRCode.ItemCode );
-                    zpl = zpl + Environment.NewLine + string.Format("^FO100,55^A0N,20,20^FD{0}^FS", qRCode.PONumber);
-                    zpl = zpl + Environment.NewLine + string.Format("^FO100,75^A0N,20,20^FD{0}^FS", qRCode.ShipDate);
-                    zpl = zpl + Environment.NewLine + string.Format("^FO100,95^A0N,20,20^FD{0}^FS", qRCode.SerialNumber);
+                    zpl = zpl + Environment.NewLine + string.Format("^FO0,15^BQ,3,3^FDMA,{0}^FS", QRCode);
+                    zpl = zpl + Environment.NewLine + string.Format("^FO100,35^A0N,18,18^FD{0}^FS", qRCode.ItemCode);
+                    zpl = zpl + Environment.NewLine + string.Format("^FO100,55^A0N,18,18^FD{0}^FS", qRCode.PONumber);
+                    zpl = zpl + Environment.NewLine + string.Format("^FO100,75^A0N,18,18^FD{0}^FS", qRCode.ShipDate);
+                    zpl = zpl + Environment.NewLine + string.Format("^FO100,95^A0N,18,18^FD{0}^FS", qRCode.SerialNumber);
                     zpl = zpl + Environment.NewLine + "^XZ";
                     zpl = zpl + Environment.NewLine;
+                    //zpl = zpl + "^XA";
+                    //zpl = zpl + Environment.NewLine + "^MMT";
+                    //zpl = zpl + Environment.NewLine + "^PW250";
+                    //zpl = zpl + Environment.NewLine + "^LL0500";
+                    //zpl = zpl + Environment.NewLine + "^LH0,20";
+                    //zpl = zpl + Environment.NewLine + "^LS0";
+                    //zpl = zpl + Environment.NewLine + string.Format("~SD{0}", Convert.ToInt16(txtDarkness.EditValue.ToString()));
+                    //zpl = zpl + Environment.NewLine + string.Format("^FO0,10^BQ,3,3^FDMA,{0}^FS", QRCode);
+                    //zpl = zpl + Environment.NewLine + string.Format("^FO105,35^A0N,18,18^FD{0}^FS", qRCode.ItemCode );
+                    //zpl = zpl + Environment.NewLine + string.Format("^FO105,55^A0N,18,18^FD{0}^FS", qRCode.PONumber);
+                    //zpl = zpl + Environment.NewLine + string.Format("^FO105,75^A0N,18,18^FD{0}^FS", qRCode.ShipDate);
+                    //zpl = zpl + Environment.NewLine + string.Format("^FO105,95^A0N,18,18^FD{0}^FS", qRCode.SerialNumber);
+                    //zpl = zpl + Environment.NewLine + "^XZ";
+                    //zpl = zpl + Environment.NewLine;
 
                     qRCode.SerialNumber = qRCode.SerialNumber + 1;
 
@@ -363,13 +376,27 @@ namespace YEZONEUSA
                     zpl = zpl + Environment.NewLine + "^LL0102";
                     zpl = zpl + Environment.NewLine + "^LH10,5";
                     zpl = zpl + Environment.NewLine + "^LS10";
-                    zpl = zpl + Environment.NewLine + "^FT20,100^BQ,2,2^FDMA," + QRCode + "^FS";
-                    zpl = zpl + Environment.NewLine + "^FO90,20^A0N,12,12^FD" + qRCode.ItemCode + "^FS";
-                    zpl = zpl + Environment.NewLine + "^FO90,40^A0N,12,12^FD" + qRCode.PONumber + "^FS";
-                    zpl = zpl + Environment.NewLine + "^FO90,60^A0N,12,12^FD" + qRCode.ShipDate + "^FS";
-                    zpl = zpl + Environment.NewLine + "^FO90,80^A0N,12,12^FD" + qRCode.SerialNumber + "^FS";
+                    zpl = zpl + Environment.NewLine + "^FT15,90^BQ,2,2^FDMA," + QRCode + "^FS";
+                    zpl = zpl + Environment.NewLine + "^FO120,20^A0N,12,12^FD" + qRCode.ItemCode + "^FS";
+                    zpl = zpl + Environment.NewLine + "^FO120,40^A0N,12,12^FD" + qRCode.PONumber + "^FS";
+                    zpl = zpl + Environment.NewLine + "^FO120,60^A0N,12,12^FD" + qRCode.ShipDate + "^FS";
+                    zpl = zpl + Environment.NewLine + "^FO120,80^A0N,12,12^FD" + qRCode.SerialNumber + "^FS";
                     zpl = zpl + Environment.NewLine + "^XZ";
                     zpl = zpl + Environment.NewLine;
+
+                    //zpl = zpl + "^XA";
+                    //zpl = zpl + Environment.NewLine + "^MMT";
+                    //zpl = zpl + Environment.NewLine + "^PW203";
+                    //zpl = zpl + Environment.NewLine + "^LL0102";
+                    //zpl = zpl + Environment.NewLine + "^LH10,5";
+                    //zpl = zpl + Environment.NewLine + "^LS10";
+                    //zpl = zpl + Environment.NewLine + "^FT20,100^BQ,2,2^FDMA," + QRCode + "^FS";
+                    //zpl = zpl + Environment.NewLine + "^FO90,20^A0N,12,12^FD" + qRCode.ItemCode + "^FS";
+                    //zpl = zpl + Environment.NewLine + "^FO90,40^A0N,12,12^FD" + qRCode.PONumber + "^FS";
+                    //zpl = zpl + Environment.NewLine + "^FO90,60^A0N,12,12^FD" + qRCode.ShipDate + "^FS";
+                    //zpl = zpl + Environment.NewLine + "^FO90,80^A0N,12,12^FD" + qRCode.SerialNumber + "^FS";
+                    //zpl = zpl + Environment.NewLine + "^XZ";
+                    //zpl = zpl + Environment.NewLine;
 
                     qRCode.SerialNumber = qRCode.SerialNumber + 1;
 
