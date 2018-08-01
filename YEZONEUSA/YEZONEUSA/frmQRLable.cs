@@ -291,7 +291,7 @@ namespace YEZONEUSA
                     zpl = zpl + Environment.NewLine + "^LH0,20";
                     zpl = zpl + Environment.NewLine + "^LS0";
                     zpl = zpl + Environment.NewLine + string.Format("~SD{0}", Convert.ToInt16(txtDarkness.EditValue.ToString()));
-                    zpl = zpl + Environment.NewLine + string.Format("^FO0,20^BQ,3,3^FD{0}^FS", QRCode);
+                    zpl = zpl + Environment.NewLine + string.Format("^FO0,20^BQ,3,3^FDMA,{0}^FS", QRCode);
                     zpl = zpl + Environment.NewLine + string.Format("^FO100,35^A0N,20,20^FD{0}^FS", qRCode.ItemCode );
                     zpl = zpl + Environment.NewLine + string.Format("^FO100,55^A0N,20,20^FD{0}^FS", qRCode.PONumber);
                     zpl = zpl + Environment.NewLine + string.Format("^FO100,75^A0N,20,20^FD{0}^FS", qRCode.ShipDate);
@@ -415,26 +415,26 @@ namespace YEZONEUSA
                 if (prtdig.ShowDialog() == DialogResult.OK)
                 {
                     string prtName = prtdig.PrinterSettings.PrinterName;
-                    lblPrinterName.Text = prtName;
-                    string value = prtName;
-                    string iniFileName = string.Format("{0}\\Setting.INI", Application.StartupPath.ToString());
+                    //lblPrinterName.Text = prtName;
+                    //string value = prtName;
+                    //string iniFileName = string.Format("{0}\\Setting.INI", Application.StartupPath.ToString());
 
-                    bool blnReturnValue = WriteValue("Printer", "QRLabelPrinter", value, iniFileName);
+                    //bool blnReturnValue = WriteValue("Printer", "QRLabelPrinter", value, iniFileName);
 
 
-                    //if (prtName.ToUpper().Contains("ZEBRA") || prtName.ToUpper().Contains("ZDESIGNER"))
-                    //{
-                    //    lblPrinterName.Text = prtName;
-                    //    string value = prtName;
-                    //    string iniFileName = string.Format("{0}\\Setting.INI", Application.StartupPath.ToString());
+                    if (prtName.ToUpper().Contains("ZEBRA") || prtName.ToUpper().Contains("ZDESIGNER"))
+                    {
+                        lblPrinterName.Text = prtName;
+                        string value = prtName;
+                        string iniFileName = string.Format("{0}\\Setting.INI", Application.StartupPath.ToString());
 
-                    //    bool blnReturnValue = WriteValue("Printer", "QRLabelPrinter", value, iniFileName);
+                        bool blnReturnValue = WriteValue("Printer", "QRLabelPrinter", value, iniFileName);
 
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show("Choose other printer!(Zebra or ZDesinger)", "message");
-                    //}
+                    }
+                    else
+                    {
+                        MessageBox.Show("Choose other printer!(Zebra or ZDesinger)", "message");
+                    }
                 }
             }
             catch (Exception)

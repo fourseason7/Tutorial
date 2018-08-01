@@ -136,7 +136,7 @@ namespace YEZONEUSA
                                 " where ItemNo like '%' + '" + searchValue + "' + '%'" + "\r\n" +
                                 "    or PONo like '%' + '" + searchValue + "' + '%'" + "\r\n" +
                                 "	or Status like '%' + '" + searchValue + "' + '%'" + "\r\n" +
-                                " Order by PackingId Desc";
+                                " Order by PackingID Desc";
 
 
 
@@ -153,11 +153,11 @@ namespace YEZONEUSA
 
             if (dt.Rows.Count > 0)
             {
-                // hide columns
-                //gvPacking.Columns["PackingId"].Visible = false;
-                //gvPacking.Columns["HostName"].Visible = false;
-                //gvPacking.Columns["CreateDate"].Visible = false;
-                //gvPacking.Columns["ModifyDate"].Visible = false;
+                //hide columns
+                gvPacking.Columns["PackingID"].Visible = false;
+                gvPacking.Columns["HostName"].Visible = false;
+                gvPacking.Columns["CreateDate"].Visible = false;
+                gvPacking.Columns["ModifyDate"].Visible = false;
             }
 
 
@@ -589,7 +589,7 @@ namespace YEZONEUSA
                 //DataRow row = gvPacking.GetDataRow(gvPacking.FocusedRowHandle);
                 //var packingID = Convert.ToInt16(row[0]);
                 ////txtID.EditValue = gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "PackingID").ToString();
-                var packingID = Convert.ToInt16(gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "PackingId"));
+                var packingID = Convert.ToInt16(gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "PackingID"));
                 txtID.EditValue = packingID.ToString();
                 txtItem.EditValue = gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "ItemNo").ToString();
                 txtQuantity.EditValue = gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "Quantity").ToString();
@@ -634,7 +634,7 @@ namespace YEZONEUSA
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = sqlScripts;
                 cmd.ExecuteNonQuery();
-                
+
             }
             catch (Exception ex)
             {
@@ -665,7 +665,7 @@ namespace YEZONEUSA
                 //DataRow row = gvPacking.GetDataRow(gvPacking.FocusedRowHandle);
                 //var packingID = Convert.ToInt16(row[0]);
                 ////txtID.EditValue = gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "PackingID").ToString();
-                var packingID = Convert.ToInt16(gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "PackingId"));
+                var packingID = Convert.ToInt16(gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "PackingID"));
                 txtID.EditValue = packingID.ToString();
                 txtItem.EditValue = gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "ItemNo").ToString();
                 txtQuantity.EditValue = gvPacking.GetRowCellValue(gvPacking.FocusedRowHandle, "Quantity").ToString();

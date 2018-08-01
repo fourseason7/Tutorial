@@ -56,10 +56,10 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtShipDate = new DevExpress.XtraEditors.DateEdit();
             this.txtItemQuantity = new DevExpress.XtraEditors.SpinEdit();
+            this.txtMaterialSource = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txtMaterialSource = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
@@ -75,10 +75,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtShipDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtShipDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtItemQuantity.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaterialSource.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaterialSource.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -110,7 +110,7 @@
             // txtDarkness
             // 
             this.txtDarkness.EditValue = new decimal(new int[] {
-            25,
+            23,
             0,
             0,
             0});
@@ -458,6 +458,20 @@
             this.txtItemQuantity.Size = new System.Drawing.Size(149, 22);
             this.txtItemQuantity.TabIndex = 4;
             // 
+            // txtMaterialSource
+            // 
+            this.txtMaterialSource.Location = new System.Drawing.Point(130, 385);
+            this.txtMaterialSource.Name = "txtMaterialSource";
+            this.txtMaterialSource.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaterialSource.Properties.Appearance.Options.UseFont = true;
+            this.txtMaterialSource.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtMaterialSource.Properties.NullText = "";
+            this.txtMaterialSource.Properties.PopupSizeable = false;
+            this.txtMaterialSource.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.txtMaterialSource.Size = new System.Drawing.Size(149, 22);
+            this.txtMaterialSource.TabIndex = 8;
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -487,20 +501,6 @@
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
-            // txtMaterialSource
-            // 
-            this.txtMaterialSource.Location = new System.Drawing.Point(130, 385);
-            this.txtMaterialSource.Name = "txtMaterialSource";
-            this.txtMaterialSource.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaterialSource.Properties.Appearance.Options.UseFont = true;
-            this.txtMaterialSource.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtMaterialSource.Properties.NullText = "";
-            this.txtMaterialSource.Properties.PopupSizeable = false;
-            this.txtMaterialSource.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.txtMaterialSource.Size = new System.Drawing.Size(149, 22);
-            this.txtMaterialSource.TabIndex = 8;
-            // 
             // frmQRLable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -528,10 +528,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtShipDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtShipDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtItemQuantity.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMaterialSource.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMaterialSource.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
