@@ -74,6 +74,10 @@ namespace YEZONEUSA
 
             return dt;
         }
+        public string Right(string value, int length)
+        {
+            return value.Substring(value.Length - length);
+        }
         public void Reset()
         {
             txtPONumber.EditValue = String.Empty;
@@ -83,7 +87,7 @@ namespace YEZONEUSA
             txtFactoryCode.EditValue = String.Empty;
             txtShipDate.EditValue = GetSystemDate();
             txtSerialNumber.EditValue = "1";
-            txtMaterialSource.EditValue = String.Empty;
+            txtMaterialSource.EditValue = "Reclaim Supply                                                                      R";
 
             txtPONumber.Focus();
         }
@@ -559,11 +563,14 @@ namespace YEZONEUSA
 
             try
             {
-                materialSource = txtMaterialSource.Properties.GetKeyValueByDisplayText(txtMaterialSource.Text).ToString();
+                //materialSource = txtMaterialSource.Properties.GetKeyValueByDisplayText(txtMaterialSource.Text).ToString();
+                materialSource = txtMaterialSource.EditValue.ToString();
+                materialSource = Right(materialSource, 1);
             }
             catch (Exception)
             {
-                materialSource = string.Empty;
+                //materialSource = string.Empty;
+                materialSource = "R";
             }
             
             _QRCode qrCode = new _QRCode();
@@ -585,5 +592,6 @@ namespace YEZONEUSA
         private void frmQRLable_Shown(object sender, EventArgs e)
         {
         }
+
     }
 }

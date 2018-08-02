@@ -27,8 +27,8 @@
     <ProductName>Packing System</ProductName>
     <PublisherName>Packing System</PublisherName>
     <SuiteName>Packing</SuiteName>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>0.0.5.0</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>0.0.6.1</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
