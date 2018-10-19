@@ -84,5 +84,23 @@ namespace wcfTest1
 
             return empLists;
         }
+
+        public List<clsAvgPrice> GetAvgPrice( )
+        {
+            pubsEntities pubs = new pubsEntities( );
+
+            var sqlScripts = pubs.reptq1( ).ToList();
+            List<clsAvgPrice> AvgPrice = new List<clsAvgPrice>( );
+
+            foreach (var item in sqlScripts)
+            {
+                clsAvgPrice a = new clsAvgPrice( );
+                a.Pub_Id = item.pub_id;
+                a.Avg_Price =item.avg_price;
+
+                AvgPrice.Add( a );
+            }
+            return AvgPrice;
+        }
     }
 }

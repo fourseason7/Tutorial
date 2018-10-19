@@ -12,21 +12,21 @@ namespace Inv_1
     {
         static void Main(string[] args)
         {
-            //List<string> lists = new List<string>();
-            //lists.Add("CCGGATGGCGGCGTCACTGTC");
-            //lists.Add("CCGGATGGCGGCGTCGCTGTC");
-            //lists.Add("CGGGTTGGCGGCGTCGCTGTC");
-            //lists.Add("CAGGTTGGCGGCGTCACTGTC");
-            //lists.Add("CTGGTTGGTGGCGTCACTGTC");
-            //lists.Add("CGGGTTGGTGGCGTCGCTGTC");
-            //lists.Add("CGGGGTGGTGGCGTCGCTGTC");
-
             List<string> lists = new List<string>();
-            var dataFile = File.ReadAllLines(@"d:\Test\seqdata.txt");
-            foreach (var item in dataFile)
-            {
-                lists.Add(item);
-            }
+            lists.Add("CCGGATGGCGGCGTCACTGTC");
+            lists.Add("CCGGATGGCGGCGTCGCTGTC");
+            lists.Add("CGGGTTGGCGGCGTCGCTGTC");
+            lists.Add("CAGGTTGGCGGCGTCACTGTC");
+            lists.Add("CTGGTTGGTGGCGTCACTGTC");
+            lists.Add("CGGGTTGGTGGCGTCGCTGTC");
+            lists.Add("CGGGGTGGTGGCGTCGCTGTC");
+
+            //List<string> lists = new List<string>();
+            //var dataFile = File.ReadAllLines(@"d:\Test\seqdata.txt");
+            //foreach (var item in dataFile)
+            //{
+            //    lists.Add(item);
+            //}
 
             string strToMatch = "CSGGWTGGYGGCGTCRCTGTC";
 
@@ -47,6 +47,25 @@ namespace Inv_1
                     Console.WriteLine(item);
                 }
             }
+
+            List<string> fileLists = new List<string>();
+
+
+            var fileTexts = File.ReadLines(@"D:\Temp\hcm.txt");
+            foreach (var fileText in fileTexts)
+            {
+                if (!(string.IsNullOrWhiteSpace(fileText)))
+                {
+                    fileLists.Add(fileText);
+                }
+            }
+
+            string filePath = @"d:\temp";
+            string[] fileNames = Directory.GetFiles("d:\\temp", "*.txt");
+
+
+
+
             Console.ReadKey();
         }
     }

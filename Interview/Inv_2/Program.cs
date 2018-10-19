@@ -14,37 +14,46 @@ namespace Inv_2
 
         static void Main(string[] args)
         {
-            string filePath = @"d:\Test";
+            string filePath = @"D:\Temp\TestData";
 
             // file name
 
 
-            //string[] files = Directory.GetFiles(filePath, "*.fastq");
-            string[] files = Directory.GetFiles(filePath);
-            foreach (string item in files)
+            string[] files = Directory.GetFiles(filePath, "*.fastq");
+            //string[] files = Directory.GetFiles(filePath);
+            foreach (string file in files)
             {
                 //Console.WriteLine(item.ToString());
 
-                if (item.Contains("_Read1"))
+                //getData2(file, 1);
+
+                if (file.Contains("_Read1"))
                 {
-                    getData(item, 1);
+                    GetContents(file, 1);
                 }
-                else if (item.Contains("_Read2"))
+                else if (file.Contains("_Read2"))
                 {
-                    getData(item, 2);
+                    GetContents(file, 2);
                 }
 
             }
 
+
+            string saveFile = @"d:\temp\test.txt";
+            string writeText = string.Empty;
             foreach (string key in dictionary1.Keys)
             {
+                writeText += "Sequence at the coordinates " + key + " " + dictionary1[key] + Environment.NewLine;
                 Console.WriteLine("Sequence at the coordinates " + key + " " + dictionary1[key]);
             }
+            //File.AppendAllText(saveFile, writeText, Encoding.Default);
+            File.WriteAllText(saveFile, writeText);
+
 
             Console.ReadKey();
         }
-
-        static void getData(string fileName, int filenumber)
+        
+        static void GetContents(string fileName, int filenumber)
         {
             // line 1 : key 1, 5, 9, 13 - using mod 4
             // line 2 : value 2, 6, 10, 14 - using mod 4
@@ -97,6 +106,14 @@ namespace Inv_2
                 }
             }
         }
+        static void getData2( string fileName, int fileNumber)
+        {
+            StringBuilder fileContents = new StringBuilder();
 
+            using (var sr = new StreamReader(fileName))
+            {
+                fileContents.Append(sr.ReadToEnd());
+            }
+        }
     }
 }

@@ -26,6 +26,9 @@ namespace wcfTest1
 
         [OperationContract]
         List<clsEmployee> GetEmployees(string emp_id);
+
+        [OperationContract]
+        List<clsAvgPrice> GetAvgPrice( );
         // TODO: Add your service operations here
     }
 
@@ -83,5 +86,24 @@ namespace wcfTest1
             set { _strLastName = value; }
         }
 
+    }
+    public class clsAvgPrice
+    {
+        private string _strPub_Id;
+        private decimal _fltAvg_Price;
+
+        [DataMember]
+        public string Pub_Id
+        {
+            get { return _strPub_Id; }
+            set { _strPub_Id = value; }
+        }
+
+        [DataMember]
+        public decimal? Avg_Price
+        {
+            get { return _fltAvg_Price; }
+            set { _fltAvg_Price = value ?? 0; }
+        }    
     }
 }
