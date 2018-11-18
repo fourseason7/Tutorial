@@ -30,3 +30,4 @@ namespace AspnetNote.Models
         public virtual User user { get; set; }
     }
 }
+
