@@ -33,8 +33,8 @@ namespace MVC_Login.Controllers
                     }
                     else
                     {
-                        ViewBag.error = "Invalid Account";
-                        return View("Login");
+                        ViewBag.Message = "UserName or password is wrong";
+                        return View();
                     }
                 }
             }
