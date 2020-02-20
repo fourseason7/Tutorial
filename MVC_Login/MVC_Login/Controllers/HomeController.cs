@@ -27,21 +27,28 @@ namespace MVC_Login.Controllers
                     {
                         Session["UserID"] = obj.UserId.ToString();
                         Session["UserName"] = obj.UserName.ToString();
-                        Session["Password"] = obj.Password.ToString();
 
-                        FormsAuthentication.SetAuthCookie("fourseason7", true);
-
-                        return RedirectToAction("UserDashBoard");
+                        //return RedirectToAction("UserDashBoard");
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        ViewBag.error = "Invalid Account";
+                        return View("Login");
                     }
                 }
             }
             return View(objUser);
         }
 
-        [HttpGet]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Logout()
         {
-            return View();
+            Session.Clear();
+            Session.Abandon();
+
+            return RedirectToAction("Login");
         }
 
         public ActionResult UserDashBoard()
