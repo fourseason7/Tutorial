@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using DynamicMenyBind.DataModel;
-using DynamicMenyBind.Models;
+using MVC_LOGIN_MENU.Models;
+using MVC_LOGIN_MENU.DataModel;
 using System.Web.Security;
-namespace DynamicMenyBind.Controllers
+
+namespace MVC_LOGIN_MENU.Controllers
 {
     public class LoginController : Controller
     {
@@ -17,8 +18,8 @@ namespace DynamicMenyBind.Controllers
         {
             return View();
         }
-
         [HttpPost]
+
         public ActionResult Login(LoginModels _login)
         {
             if (ModelState.IsValid) //validating the user inputs
@@ -26,29 +27,27 @@ namespace DynamicMenyBind.Controllers
                 bool isExist = false;
                 using (awEntities _entity = new awEntities())  // out Entity name is "SampleMenuMasterDBEntites"
                 {
-                    //isExist = _entity.UserLists.Where(x => x.UserName.Trim().ToLower() == _login.UserName.Trim().ToLower()).Any(); //validating the user name in tblLogin table whether the user name is exist or not
-
-                    isExist = _entity.UserLists.Where(x => x.UserName.Equals(_login.UserName.Trim())).Any();
-
-                    if (isExist) 
+                    isExist = _entity.UserLists.Where(x => x.UserName.Trim().ToLower() == _login.UserName.Trim().ToLower()).Any(); //validating the user name in tblLogin table whether the user name is exist or not
+                    if (isExist)
                     {
-                        LoginModels _loginCredentials= _entity.UserLists.Where(x => x.UserName.Trim().ToLower() == _login.UserName.Trim().ToLower()).Select(x => new LoginModels
+                        LoginModels _loginCredentials = _entity.UserLists.Where(x => x.UserName.Trim().ToLower() == _login.UserName.Trim().ToLower()).Select(x => new LoginModels
                         {
-                            UserName=x.UserName,
-                            RoleName=x.UserRole.Roles,
-                            UserRoleId=x.RoleId,
-                            UserId=x.UserId
+                            UserName = x.UserName,                            
+                            RoleName = x.UserRole.Roles,
+                            UserRoleId = x.RoleId,
+                            UserId = x.UserId
                         }).FirstOrDefault();  // Get the login user details and bind it to LoginModels class
                         List<MenuModels> _menus = _entity.MenuSubs.Where(x => x.RoleId == _loginCredentials.UserRoleId).Select(x => new MenuModels
                         {
-                            MainMenuId=x.MenuMain.Id ,
-                            MainMenuName=x.MenuMain.MainMenu,
-                            SubMenuId=x.Id,
-                            SubMenuName=x.SubMenu,
-                            ControllerName=x.Controller,
-                            ActionName=x.Action,
-                            RoleId=x.RoleId,
-                            RoleName=x.UserRole.Roles
+
+                            MainMenuId = x.MenuMain.Id,
+                            MainMenuName = x.MenuMain.MainMenu,
+                            SubMenuId = x.Id,
+                            SubMenuName = x.SubMenu,
+                            ControllerName = x.Controller,
+                            ActionName = x.Action,
+                            RoleId = x.RoleId,
+                            RoleName = x.UserRole.Roles
                         }).ToList(); //Get the Menu details from entity and bind it in MenuModels list.
                         FormsAuthentication.SetAuthCookie(_loginCredentials.UserName, false); // set the formauthentication cookie
                         Session["LoginCredentials"] = _loginCredentials; // Bind the _logincredentials details to "LoginCredentials" session

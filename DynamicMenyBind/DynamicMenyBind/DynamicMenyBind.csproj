@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -194,11 +195,6 @@
     <Compile Include="DataModel\ErrorLog.cs">
       <DependentUpon>awDBConnect.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\MenuDBContext.Designer.cs">
-      <DependentUpon>MenuDBContext.edmx</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
     <Compile Include="DataModel\MenuMain.cs">
       <DependentUpon>awDBConnect.tt</DependentUpon>
     </Compile>
@@ -356,12 +352,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Login\Login.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="DataModel\MenuDBContext.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MenuDBContext.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DataModel\awDBConnect.edmx">
