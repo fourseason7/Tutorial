@@ -116,8 +116,7 @@ namespace MVC_AW.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=\"71.40.127.102, 20143\";Initial Catalog=AdventureWorks;Persist Security Info=True;User ID=awadmin;Password=awadmin123");
+                optionsBuilder.UseSqlServer("Name=awDatabase");
             }
         }
 
@@ -3339,6 +3338,10 @@ namespace MVC_AW.Models
             {
                 entity.HasKey(e => e.UserId)
                     .HasName("PK__UserList__3214EC0707D78655");
+
+                entity.Property(e => e.Comments)
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Email)
                     .HasMaxLength(50)
