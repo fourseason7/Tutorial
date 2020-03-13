@@ -31,6 +31,7 @@ namespace MvcMovie
                     var context = services.GetRequiredService<MvcMovieContext>();
                     context.Database.Migrate();
                     SeedData.Initialize(services);
+                    DBInitializer.Initialize(services);
                 }
                 catch (Exception ex)
                 {
