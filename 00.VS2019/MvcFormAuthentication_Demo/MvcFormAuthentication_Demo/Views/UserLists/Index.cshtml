@@ -1,0 +1,99 @@
+﻿@model IEnumerable<MvcFormAuthentication_Demo.DataModels.UserList>
+
+@{
+    ViewBag.Title = "User Lists";
+}
+
+<h2>User Lists</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastLoginDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoginFailedCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoginIPAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerTimeZone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastAccessedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountLocked)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserRole.Roles)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mobile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastLoginDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoginFailedCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoginIPAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerTimeZone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastAccessedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountLocked)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserRole.Roles)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.UserId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.UserId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
+            </td>
+        </tr>
+    }
+</table>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
