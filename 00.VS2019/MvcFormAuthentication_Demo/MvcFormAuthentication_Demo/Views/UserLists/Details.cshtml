@@ -1,0 +1,114 @@
+﻿@model MvcFormAuthentication_Demo.DataModels.UserList
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UserList</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastLoginDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastLoginDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoginFailedCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoginFailedCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoginIPAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoginIPAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerTimeZone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerTimeZone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastAccessedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastAccessedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountLocked)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountLocked)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserRole.Roles)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserRole.Roles)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
