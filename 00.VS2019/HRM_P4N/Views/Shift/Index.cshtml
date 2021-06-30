@@ -1,0 +1,113 @@
+﻿@model IEnumerable<HRM_P4N.Models.Shift>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LunchStartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LunchEndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LunchMin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DinnerStartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DinnerEndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DinnerMin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegularMin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OverNight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActiveFlag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupCompany)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LunchStartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LunchEndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LunchMin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DinnerStartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DinnerEndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DinnerMin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegularMin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OverNight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActiveFlag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupCompany.GroupCompanyId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ShiftId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ShiftId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ShiftId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

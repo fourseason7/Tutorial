@@ -1,0 +1,129 @@
+﻿@model HRM_P4N.Models.Shift
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Shift</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ShiftId" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Code" class="control-label"></label>
+                <input asp-for="Code" class="form-control" />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GroupCompanyId" class="control-label"></label>
+                <select asp-for="GroupCompanyId" class="form-control" asp-items="ViewBag.GroupCompanyId"></select>
+                <span asp-validation-for="GroupCompanyId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartTime" class="control-label"></label>
+                <input asp-for="StartTime" class="form-control" />
+                <span asp-validation-for="StartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndTime" class="control-label"></label>
+                <input asp-for="EndTime" class="form-control" />
+                <span asp-validation-for="EndTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LunchStartTime" class="control-label"></label>
+                <input asp-for="LunchStartTime" class="form-control" />
+                <span asp-validation-for="LunchStartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LunchEndTime" class="control-label"></label>
+                <input asp-for="LunchEndTime" class="form-control" />
+                <span asp-validation-for="LunchEndTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LunchMin" class="control-label"></label>
+                <input asp-for="LunchMin" class="form-control" />
+                <span asp-validation-for="LunchMin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DinnerStartTime" class="control-label"></label>
+                <input asp-for="DinnerStartTime" class="form-control" />
+                <span asp-validation-for="DinnerStartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DinnerEndTime" class="control-label"></label>
+                <input asp-for="DinnerEndTime" class="form-control" />
+                <span asp-validation-for="DinnerEndTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DinnerMin" class="control-label"></label>
+                <input asp-for="DinnerMin" class="form-control" />
+                <span asp-validation-for="DinnerMin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegularMin" class="control-label"></label>
+                <input asp-for="RegularMin" class="form-control" />
+                <span asp-validation-for="RegularMin" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="OverNight" /> @Html.DisplayNameFor(model => model.OverNight)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActiveFlag" class="control-label"></label>
+                <input asp-for="ActiveFlag" class="form-control" />
+                <span asp-validation-for="ActiveFlag" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HostName" class="control-label"></label>
+                <input asp-for="HostName" class="form-control" />
+                <span asp-validation-for="HostName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Created" class="control-label"></label>
+                <input asp-for="Created" class="form-control" />
+                <span asp-validation-for="Created" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedBy" class="control-label"></label>
+                <input asp-for="CreatedBy" class="form-control" />
+                <span asp-validation-for="CreatedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Modified" class="control-label"></label>
+                <input asp-for="Modified" class="form-control" />
+                <span asp-validation-for="Modified" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ModifiedBy" class="control-label"></label>
+                <input asp-for="ModifiedBy" class="form-control" />
+                <span asp-validation-for="ModifiedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShiftId1" class="control-label"></label>
+                <input asp-for="ShiftId1" class="form-control" />
+                <span asp-validation-for="ShiftId1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
