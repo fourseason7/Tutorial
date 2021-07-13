@@ -1,0 +1,1 @@
+﻿https://www.completecsharptutorial.com/asp-net-mvc5/learn-razor-syntax-by-example-in-asp-net-mvc-5.php

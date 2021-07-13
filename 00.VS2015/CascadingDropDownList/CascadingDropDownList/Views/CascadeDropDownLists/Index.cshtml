@@ -6,48 +6,61 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.DropDownList("Category", new SelectList(ViewBag.categories as System.Collections.IEnumerable, "categoryId", "categoryName"),
+<div class="form-group">
+    <div class="col-md-5">
+        @Html.DropDownList("Category", new SelectList(ViewBag.categories as System.Collections.IEnumerable, "categoryId", "categoryName"),
+                    "Select a categorie", new { id = "dd_Country" })
 
-                "Select a categorie", new { id = "dd_Country" })
-</p>
-<p>
-    @Html.DropDownList("Sub Category", new SelectList(Enumerable.Empty<SelectListItem>(), "subcatId", "Subcategoryname"),
-               "Select a subcategorie", new { id = "ddState" })
-</p>
+    </div>
+    <div class="col-md-5">
+        @Html.DropDownList("Sub Category", new SelectList(Enumerable.Empty<SelectListItem>(), "subcatId", "Subcategoryname"),
+                   "Select a subcategorie", new {@class ="form-contorl", id = "ddState" })
+    </div>
+</div>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Subcategoryname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.category.categoryName)
-        </th>
-        <th></th>
-    </tr>
+<fieldset>
+    <legend>
+        Category Information
+    </legend>
+    <div>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Subcategoryname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.category.categoryName)
+                </th>
+                <th></th>
+            </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Subcategoryname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.category.categoryName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.subcatId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.subcatId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.subcatId })
-        </td>
-    </tr>
-}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Subcategoryname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.category.categoryName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.subcatId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.subcatId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.subcatId })
+                    </td>
+                </tr>
+            }
 
-</table>
+        </table>
+
+    </div>
+</fieldset>
+
+
 
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script type="text/javascript">
