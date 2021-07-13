@@ -44,12 +44,14 @@ namespace IMSDev.Controllers
             productCategories.Insert(0, new ProductCategory { Id = 0, Name = "Select" });
             ViewBag.ProductCategoryId = new SelectList(productCategories, "Id", "Name");
 
-            List<ProductSubCategory> productSubCategories = new List<ProductSubCategory>();
-            productSubCategories = db.ProductSubCategories.ToList();
-            productSubCategories.Insert(0, new ProductSubCategory { Id = 0, Name = "Select" });
-            ViewBag.ProductSubCategoryId = new SelectList(productSubCategories, "Id", "Name");
+            List<ProductSubCategory> productsubcategories = new List<ProductSubCategory>();
+            productsubcategories = db.ProductSubCategories.ToList();
+            productsubcategories.Insert(0, new ProductSubCategory { Id = 0, Name = "Select" });
+            ViewBag.productsubcategoryid = new SelectList(productsubcategories, "Id", "Name");
+
             //ViewBag.ProductCategoryId = new SelectList(db.ProductCategories, "Id", "Name");
             //ViewBag.ProductSubCategoryId = new SelectList(db.ProductSubCategories, "Id", "Name");
+
             return View();
         }
 
@@ -147,26 +149,24 @@ namespace IMSDev.Controllers
             return RedirectToAction("Index");
         }
 
-        public JsonResult GetSubCategory(int CategoryId)
+        public ActionResult ProductList()
         {
-            //List<ProductSubCategory> productSubCategories = new List<ProductSubCategory>();
-            //productSubCategories = db.ProductSubCategories.Where(x => x.ProductCategoryId == CategoryId).ToList();
-            //productSubCategories.Insert(0, new ProductSubCategory { Id = 0, Name = "Select" });
-            ////ViewBag.ProductSubCategoryId = new SelectList(productSubCategories, "Id", "Name");
-            
-            var productSubCategories = db.ProductSubCategories.Where(s => s.ProductCategoryId == CategoryId).Select(c => new { Id = c.Id, Name = c.Name }).ToList();
-
-            return Json(new SelectList(productSubCategories, "Id", "Name"));
-            //return Json(productSubCategories);
+            var products = db.Products.Where(x => x.Id > 0).Select(x => x).ToList();
+            return View(products);
         }
 
-        public JsonResult GetProducts(int SubCategoryId)
+        public List<ProductCategory> getProductCategories()
         {
-            List<Product> products = new List<Product>();
+            List<ProductCategory> productCategories = db.ProductCategories.ToList();
+            return productCategories;
+        }
 
-            products = db.Products.Where(x => x.ProductSubCategoryId == SubCategoryId).ToList();
+        public ActionResult getProductSubCategories(int id)
+        {
+            List<ProductSubCategory> productSubCategories = db.ProductSubCategories.Where(x => x.ProductCategoryId == id)
+                .Select(x => new ProductSubCategory { Id = x.Id, Name = x.Name }).ToList();
 
-            return Json(new SelectList(products, "Id", "Name"));
+            return Json(new SelectList(productSubCategories, "Id", "Name"), JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)

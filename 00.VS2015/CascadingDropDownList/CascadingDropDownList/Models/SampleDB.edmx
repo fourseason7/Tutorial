@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SampleDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="categoryId" />
+          </Key>
+          <Property Name="categoryId" Type="int" Nullable="false" />
+          <Property Name="categoryName" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="subcategories">
+          <Key>
+            <PropertyRef Name="subcatId" />
+          </Key>
+          <Property Name="subcatId" Type="int" Nullable="false" />
+          <Property Name="CatId" Type="int" />
+          <Property Name="Subcategoryname" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <Association Name="FK_subcategories_category">
+          <End Role="category" Type="Self.category" Multiplicity="0..1" />
+          <End Role="subcategories" Type="Self.subcategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="categoryId" />
+            </Principal>
+            <Dependent Role="subcategories">
+              <PropertyRef Name="CatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SampleDBModelStoreContainer">
+          <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="subcategories" EntityType="Self.subcategories" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_subcategories_category" Association="Self.FK_subcategories_category">
+            <End Role="category" EntitySet="category" />
+            <End Role="subcategories" EntitySet="subcategories" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SampleDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SampleDBEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="categories" EntityType="SampleDBModel.category" />
+          <EntitySet Name="subcategories" EntityType="SampleDBModel.subcategory" />
+          <AssociationSet Name="FK_subcategories_category" Association="SampleDBModel.FK_subcategories_category">
+            <End Role="category" EntitySet="categories" />
+            <End Role="subcategory" EntitySet="subcategories" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="categoryId" />
+          </Key>
+          <Property Name="categoryId" Type="Int32" Nullable="false" />
+          <Property Name="categoryName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="subcategories" Relationship="SampleDBModel.FK_subcategories_category" FromRole="category" ToRole="subcategory" />
+        </EntityType>
+        <EntityType Name="subcategory">
+          <Key>
+            <PropertyRef Name="subcatId" />
+          </Key>
+          <Property Name="subcatId" Type="Int32" Nullable="false" />
+          <Property Name="CatId" Type="Int32" />
+          <Property Name="Subcategoryname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="category" Relationship="SampleDBModel.FK_subcategories_category" FromRole="subcategory" ToRole="category" />
+        </EntityType>
+        <Association Name="FK_subcategories_category">
+          <End Type="SampleDBModel.category" Role="category" Multiplicity="0..1" />
+          <End Type="SampleDBModel.subcategory" Role="subcategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="categoryId" />
+            </Principal>
+            <Dependent Role="subcategory">
+              <PropertyRef Name="CatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SampleDBModelStoreContainer" CdmEntityContainer="SampleDBEntities" >
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="SampleDBModel.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="subcategories">
+            <EntityTypeMapping TypeName="SampleDBModel.subcategory">
+              <MappingFragment StoreEntitySet="subcategories">
+                <ScalarProperty Name="Subcategoryname" ColumnName="Subcategoryname" />
+                <ScalarProperty Name="CatId" ColumnName="CatId" />
+                <ScalarProperty Name="subcatId" ColumnName="subcatId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

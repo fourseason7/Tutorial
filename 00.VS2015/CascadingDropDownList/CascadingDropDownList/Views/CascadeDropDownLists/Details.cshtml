@@ -1,0 +1,34 @@
+﻿@model CascadingDropDownList.Models.subcategory
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>subcategory</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Subcategoryname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subcategoryname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category.categoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category.categoryName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.subcatId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

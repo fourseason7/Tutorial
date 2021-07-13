@@ -11,83 +11,82 @@
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    <h4>Product</h4>
-    <hr />
+    <div class="form-horizontal">
+        <h4>Product</h4>
+        <hr />
 
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ProductCategory.Name, "ProductCategoryName", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("ProductCategoryId", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.ProductCategory.Name, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductCategory.Name, "ProductCategoryName", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.DropDownList("ProductCategoryId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProductCategory.Name, "", new { @class = "text-danger" })*@
+                @*@Html.DropDownList("ProductCategoryId", (IEnumerable<SelectListItem>)ViewBag.ProductCategoryId, new { ProductCategoryId = "ProductCategoryId", @class = "form-control" })*@
+                @Html.DropDownListFor(model => model.ProductCategory.Id)
+                @*<label asp-for="Category Name" class="control-label"></label>
+        <select class="form-control" id="ProductCategoryId" name="ProductCategoryId" asp-for="ProductCategoryId"
+                asp-items="@(new SelectList(@ViewBag.ProductCategoryId, "Id", "Name"))"></select>*@
+            </div>
         </div>
-    </div>
-    @*<div class="form-group">
+
+        <div class="form-group">
             @Html.LabelFor(model => model.ProductSubCategory.Name, "ProductSubCategoryName", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("ProductSubCategoryId", null, htmlAttributes: new { @class = "form-control" })
+                @*@Html.DropDownList("ProductSubCategoryId", null, htmlAttributes: new { @class = "form-control" })*@
+                @Html.DropDownList("ProductSubCategoryId", new SelectList(Enumerable.Empty<SelectListItem>()))
                 @Html.ValidationMessageFor(model => model.ProductSubCategory.Name, "", new { @class = "text-danger" })
+                @*<select class="form-control" id="ProductSubCategoryId" name="ProductSubCategoryId" asp-for="ProductSubCategoryId"
+                        asp-items="@(new SelectList(string.Empty, "Id", "Name"))"></select>*@
             </div>
-        </div>*@
-    <div class="col-md-2 form-group">
-        <select asp-for="ProductSubCategoryId" class="form-control" id="ProductSubCategoryId"></select>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.SafetyStockLevel, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.SafetyStockLevel, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.SafetyStockLevel, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.SafetyStockLevel, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SafetyStockLevel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SafetyStockLevel, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ReorderPoint, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ReorderPoint, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ReorderPoint, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ReorderPoint, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ReorderPoint, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ReorderPoint, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.StandardCost, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.StandardCost, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.StandardCost, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.StandardCost, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StandardCost, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StandardCost, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ListPrice, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ListPrice, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ListPrice, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ListPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ListPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ListPrice, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
         </div>
     </div>
-</div>
 }
 
 <div>
@@ -96,52 +95,41 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+}
 <script type="text/javascript">
-        //$(function () {
-        //    $("select#ProductCategoryId").change(function () {
-        //        var cid = $(this).val();
-
-        //        $("select#ProductSubCategoryId").empty();
-
-        //        $.getJSON(`/Products/GetSubCategory?CategoryId=${cid}`, function (data) {
-        //            //console.log(data);
-        //            $.each(data, function (i, item) {
-        //                $("select#ProductSubCategoryId").append(`<option value="${item.id}">${item.name}</option>`);
-        //            });
-        //        });
-        //    })
-        //});
-    $(function () {
-        $$("select#ProductCategoryId").change(function () {
-            $(document).ready(function () {
-                getSubCategoryListByCategoryId();
-            })
-            $("#categoryId").change(function () {
-                getSubCategoryListByCategoryId();
-            });
-            var getSubCategoryListByCategoryId = function () {
-                 $.ajax({
-                    url: '@Url.Action("GetSubCategory", "Products")',
-                    type: 'GET',
-                    data: {
-                        categoryId: $('#CategoryId').val(),
-                    },
-                    success: function (data) {
-                        $('#ProductSubCategoryId').find('option').remove()
-                        $(data).each(
-                            function (index, item) {
-                                $('#ProductSubCategoryId').append('<option value="' + item.ProductSubCategoryId + '">' + item.Name + '</option>')
-                            });
-                    },
-                    error: function () {
-                    }
-                   });
-            }
-        });
+    $(document).ready(function () {
+        var items = "<option value='0'>Select</option>";
+        $("#ProductSubCategoryId").html(items);
 
     });
 
+    $(document).ready(function ()
+        var cid = document.getElementById('ProductCategoryId').value;
+        $.ajax({
+            url: "getProductSubCategories",
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            datatype: JSON,
+            data: {Id: cid},
+            success: function (result) {
+                $(result).each(function () {
+                    $("#FromJson").append($("<option></option>").val(this.ID).html(this.Name));
+                });
+            },
+            error: function (data) { }
+        });
+    );
+
+    @*$(document).ready(function(){
+        var url = '@Url.Content("~/")' + "Products/getProductSubCategories";
+        var ddlSource = "#ProductCategoryId";
+        $.getJSON(url, { Id: $(ddlSource).val() }, function (data) {
+            var items = '';
+            $("#ProductSubCategoryId").empty();
+            $.each(data, function (i, ProductSubCategoryId) {
+                items += "<option value='" + ProductSubCategoryId.value + "'>" + ProductSubCategoryId.text + "</option>";
+            });
+            $("#ProductSubCategoryId").html(items);
+        });
+    });*@
 </script>
-
-}
-
