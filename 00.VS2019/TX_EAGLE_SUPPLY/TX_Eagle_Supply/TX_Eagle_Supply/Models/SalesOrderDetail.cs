@@ -24,5 +24,6 @@ namespace TX_Eagle_Supply.Models
         public System.DateTime ModifiedDate { get; set; }
     
         public virtual SalesOrderHeader SalesOrderHeader { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

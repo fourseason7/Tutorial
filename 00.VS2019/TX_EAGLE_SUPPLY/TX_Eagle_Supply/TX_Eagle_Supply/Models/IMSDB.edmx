@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="Id" />
@@ -224,6 +224,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SalesOrderDetail_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="SalesOrderDetail" Type="Self.SalesOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SalesOrderDetail">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SalesOrderDetail_SalesOrderHeader">
           <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="1" />
           <End Role="SalesOrderDetail" Type="Self.SalesOrderDetail" Multiplicity="*" />
@@ -296,6 +308,10 @@
             <End Role="ProductCategory" EntitySet="ProductCategory" />
             <End Role="ProductSubCategory" EntitySet="ProductSubCategory" />
           </AssociationSet>
+          <AssociationSet Name="FK_SalesOrderDetail_Product" Association="Self.FK_SalesOrderDetail_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="SalesOrderDetail" EntitySet="SalesOrderDetail" />
+          </AssociationSet>
           <AssociationSet Name="FK_SalesOrderDetail_SalesOrderHeader" Association="Self.FK_SalesOrderDetail_SalesOrderHeader">
             <End Role="SalesOrderHeader" EntitySet="SalesOrderHeader" />
             <End Role="SalesOrderDetail" EntitySet="SalesOrderDetail" />
@@ -309,8 +325,7 @@
             <End Role="SalesOrderHeader" EntitySet="SalesOrderHeader" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -383,6 +398,7 @@
           <NavigationProperty Name="ProductCategory" Relationship="Self.FK_Product_ProductCategory1" FromRole="Product" ToRole="ProductCategory" />
           <NavigationProperty Name="ProductSubCategory" Relationship="Self.FK_Product_ProductSubCategory" FromRole="Product" ToRole="ProductSubCategory" />
           <NavigationProperty Name="ProductInventories" Relationship="Self.FK_ProductInventory_Product" FromRole="Product" ToRole="ProductInventory" />
+          <NavigationProperty Name="SalesOrderDetails" Relationship="Model.FK_SalesOrderDetail_Product" FromRole="Product" ToRole="SalesOrderDetail" />
         </EntityType>
         <EntityType Name="ProductCategory">
           <Key>
@@ -436,6 +452,7 @@
           <Property Name="LineTotal" Type="Decimal" Precision="38" Scale="6" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="SalesOrderHeader" Relationship="Self.FK_SalesOrderDetail_SalesOrderHeader" FromRole="SalesOrderDetail" ToRole="SalesOrderHeader" />
+          <NavigationProperty Name="Product" Relationship="Model.FK_SalesOrderDetail_Product" FromRole="SalesOrderDetail" ToRole="Product" />
         </EntityType>
         <EntityType Name="SalesOrderHeader">
           <Key>
@@ -635,7 +652,23 @@
             <End Role="SalesOrderHeader" EntitySet="SalesOrderHeaders" />
             <End Role="SalesOrderDetail" EntitySet="SalesOrderDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_SalesOrderDetail_Product" Association="Model.FK_SalesOrderDetail_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="SalesOrderDetail" EntitySet="SalesOrderDetails" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_SalesOrderDetail_Product">
+          <End Type="Model.Product" Role="Product" Multiplicity="1" />
+          <End Type="Model.SalesOrderDetail" Role="SalesOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SalesOrderDetail">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

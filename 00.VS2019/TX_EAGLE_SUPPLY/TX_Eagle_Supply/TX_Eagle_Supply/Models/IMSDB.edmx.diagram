@@ -25,6 +25,7 @@
         <AssociationConnector Association="Model.FK_ProductInventory_Product" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_ProductSubCategory_ProductCategory" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_SalesOrderDetail_SalesOrderHeader" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_SalesOrderDetail_Product" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
