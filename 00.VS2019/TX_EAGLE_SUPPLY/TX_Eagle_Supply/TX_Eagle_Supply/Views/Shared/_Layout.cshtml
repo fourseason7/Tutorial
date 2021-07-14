@@ -22,6 +22,14 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Employee<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Employee Type", "Index", "EmployeeType")</li>
+                            <li>@Html.ActionLink("Employee", "Index", "Employee")</li>
+                            @*<li><a href="#">Employee</a></li>*@
+                        </ul>
+                    </li>
+                    <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Customer<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Page 1-1</a></li>
@@ -48,7 +56,7 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container-fluid body-content">
         @RenderBody()
         <hr />
         <footer>

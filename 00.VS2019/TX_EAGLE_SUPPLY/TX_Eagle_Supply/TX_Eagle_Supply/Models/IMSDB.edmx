@@ -34,7 +34,7 @@
           <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
-          <Property Name="EmployeeType" Type="int" />
+          <Property Name="EmployeeTypeId" Type="int" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedDate" Type="datetime" />
@@ -164,15 +164,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Employee_EmployeeType">
-          <End Role="EmployeeType" Type="Self.EmployeeType" Multiplicity="1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+        <Association Name="FK_Employee_EmployeeType1">
+          <End Role="EmployeeType" Type="Self.EmployeeType" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EmployeeType">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Employee">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="EmployeeTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -260,15 +260,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SalesOrderHeader_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-          <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="0..1" />
+        <Association Name="FK_SalesOrderHeader_Employee1">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="SalesOrderHeader">
-              <PropertyRef Name="SalesOrderID" />
+              <PropertyRef Name="SalesPersonID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -288,7 +288,7 @@
             <End Role="StateProvince" EntitySet="StateProvince" />
             <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
-          <AssociationSet Name="FK_Employee_EmployeeType" Association="Self.FK_Employee_EmployeeType">
+          <AssociationSet Name="FK_Employee_EmployeeType1" Association="Self.FK_Employee_EmployeeType1">
             <End Role="EmployeeType" EntitySet="EmployeeType" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
@@ -320,7 +320,7 @@
             <End Role="Customer" EntitySet="Customer" />
             <End Role="SalesOrderHeader" EntitySet="SalesOrderHeader" />
           </AssociationSet>
-          <AssociationSet Name="FK_SalesOrderHeader_Employee" Association="Self.FK_SalesOrderHeader_Employee">
+          <AssociationSet Name="FK_SalesOrderHeader_Employee1" Association="Self.FK_SalesOrderHeader_Employee1">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="SalesOrderHeader" EntitySet="SalesOrderHeader" />
           </AssociationSet>
@@ -350,23 +350,6 @@
           <NavigationProperty Name="StateProvince" Relationship="Self.FK_Customer_Customer" FromRole="Customer" ToRole="StateProvince" />
           <NavigationProperty Name="SalesOrderHeader" Relationship="Self.FK_SalesOrderHeader_Customer" FromRole="Customer" ToRole="SalesOrderHeader" />
         </EntityType>
-        <EntityType Name="Employee">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EmployeeType" Type="Int32" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="EmployeeType1" Relationship="Self.FK_Employee_EmployeeType" FromRole="Employee" ToRole="EmployeeType" />
-          <NavigationProperty Name="SalesOrderHeader" Relationship="Self.FK_SalesOrderHeader_Employee" FromRole="Employee" ToRole="SalesOrderHeader" />
-        </EntityType>
         <EntityType Name="EmployeeType">
           <Key>
             <PropertyRef Name="Id" />
@@ -375,7 +358,7 @@
           <Property Name="EmployeeTypeName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="EmployeeTypeDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_EmployeeType" FromRole="EmployeeType" ToRole="Employee" />
+          <NavigationProperty Name="Employees" Relationship="Model.FK_Employee_EmployeeType1" FromRole="EmployeeType" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -470,8 +453,8 @@
           <Property Name="Comment" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_SalesOrderHeader_Customer" FromRole="SalesOrderHeader" ToRole="Customer" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_SalesOrderHeader_Employee" FromRole="SalesOrderHeader" ToRole="Employee" />
           <NavigationProperty Name="SalesOrderDetails" Relationship="Self.FK_SalesOrderDetail_SalesOrderHeader" FromRole="SalesOrderHeader" ToRole="SalesOrderDetail" />
+          <NavigationProperty Name="Employee" Relationship="Model.FK_SalesOrderHeader_Employee1" FromRole="SalesOrderHeader" ToRole="Employee" />
         </EntityType>
         <EntityType Name="StateProvince">
           <Key>
@@ -513,30 +496,6 @@
           <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Customer">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="SalesOrderHeader">
-              <PropertyRef Name="SalesOrderID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Employee_EmployeeType">
-          <End Role="EmployeeType" Type="Self.EmployeeType" Multiplicity="1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="EmployeeType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Employee">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SalesOrderHeader_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-          <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Employee">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="SalesOrderHeader">
@@ -606,7 +565,6 @@
         </Association>
         <EntityContainer Name="IMSDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Customers" EntityType="Self.Customer" />
-          <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="EmployeeTypes" EntityType="Self.EmployeeType" />
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="ProductCategories" EntityType="Self.ProductCategory" />
@@ -622,14 +580,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_SalesOrderHeader_Customer" Association="Self.FK_SalesOrderHeader_Customer">
             <End Role="Customer" EntitySet="Customers" />
-            <End Role="SalesOrderHeader" EntitySet="SalesOrderHeaders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Employee_EmployeeType" Association="Self.FK_Employee_EmployeeType">
-            <End Role="EmployeeType" EntitySet="EmployeeTypes" />
-            <End Role="Employee" EntitySet="Employees" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SalesOrderHeader_Employee" Association="Self.FK_SalesOrderHeader_Employee">
-            <End Role="Employee" EntitySet="Employees" />
             <End Role="SalesOrderHeader" EntitySet="SalesOrderHeaders" />
           </AssociationSet>
           <AssociationSet Name="FK_Product_ProductCategory1" Association="Self.FK_Product_ProductCategory1">
@@ -656,6 +606,15 @@
             <End Role="Product" EntitySet="Products" />
             <End Role="SalesOrderDetail" EntitySet="SalesOrderDetails" />
           </AssociationSet>
+          <EntitySet Name="Employees" EntityType="Model.Employee" />
+          <AssociationSet Name="FK_Employee_EmployeeType1" Association="Model.FK_Employee_EmployeeType1">
+            <End Role="EmployeeType" EntitySet="EmployeeTypes" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesOrderHeader_Employee1" Association="Model.FK_SalesOrderHeader_Employee1">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="SalesOrderHeader" EntitySet="SalesOrderHeaders" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_SalesOrderDetail_Product">
           <End Type="Model.Product" Role="Product" Multiplicity="1" />
@@ -666,6 +625,47 @@
             </Principal>
             <Dependent Role="SalesOrderDetail">
               <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeTypeId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="EmployeeType" Relationship="Model.FK_Employee_EmployeeType1" FromRole="Employee" ToRole="EmployeeType" />
+          <NavigationProperty Name="SalesOrderHeaders" Relationship="Model.FK_SalesOrderHeader_Employee1" FromRole="Employee" ToRole="SalesOrderHeader" />
+        </EntityType>
+        <Association Name="FK_Employee_EmployeeType1">
+          <End Type="Model.EmployeeType" Role="EmployeeType" Multiplicity="0..1" />
+          <End Type="Model.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="EmployeeTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesOrderHeader_Employee1">
+          <End Type="Model.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="Model.SalesOrderHeader" Role="SalesOrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SalesOrderHeader">
+              <PropertyRef Name="SalesPersonID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -690,22 +690,6 @@
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="PhoneNumberType" ColumnName="PhoneNumberType" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Employees">
-            <EntityTypeMapping TypeName="Model.Employee">
-              <MappingFragment StoreEntitySet="Employee">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="EmployeeType" ColumnName="EmployeeType" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
               </MappingFragment>
@@ -828,6 +812,22 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="Model.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EmployeeTypeId" ColumnName="EmployeeTypeId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

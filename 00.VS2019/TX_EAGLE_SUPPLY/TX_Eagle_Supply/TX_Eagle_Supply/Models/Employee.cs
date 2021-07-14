@@ -14,18 +14,25 @@ namespace TX_Eagle_Supply.Models
     
     public partial class Employee
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Employee()
+        {
+            this.SalesOrderHeaders = new HashSet<SalesOrderHeader>();
+        }
+    
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
-        public Nullable<int> EmployeeType { get; set; }
+        public Nullable<int> EmployeeTypeId { get; set; }
         public bool IsActive { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
     
-        public virtual EmployeeType EmployeeType1 { get; set; }
-        public virtual SalesOrderHeader SalesOrderHeader { get; set; }
+        public virtual EmployeeType EmployeeType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesOrderHeader> SalesOrderHeaders { get; set; }
     }
 }

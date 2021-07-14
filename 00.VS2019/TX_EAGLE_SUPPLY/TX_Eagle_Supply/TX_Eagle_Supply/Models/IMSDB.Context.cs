@@ -26,7 +26,6 @@ namespace TX_Eagle_Supply.Models
         }
     
         public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<EmployeeType> EmployeeTypes { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
@@ -36,5 +35,6 @@ namespace TX_Eagle_Supply.Models
         public virtual DbSet<SalesOrderHeader> SalesOrderHeaders { get; set; }
         public virtual DbSet<StateProvince> StateProvinces { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
     }
 }

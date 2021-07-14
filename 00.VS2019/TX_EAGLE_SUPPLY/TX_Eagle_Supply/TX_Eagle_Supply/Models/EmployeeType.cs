@@ -14,11 +14,18 @@ namespace TX_Eagle_Supply.Models
     
     public partial class EmployeeType
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public EmployeeType()
+        {
+            this.Employees = new HashSet<Employee>();
+        }
+    
         public int Id { get; set; }
         public string EmployeeTypeName { get; set; }
         public string EmployeeTypeDescription { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
     
-        public virtual Employee Employee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employee> Employees { get; set; }
     }
 }

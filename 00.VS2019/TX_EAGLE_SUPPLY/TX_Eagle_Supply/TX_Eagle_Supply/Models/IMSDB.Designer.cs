@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\02. GitHub\Tutorial\00.VS2019\TX_EAGLE_SUPPLY\TX_Eagle_Supply\TX_Eagle_Supply\Models\IMSDB.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\GitHub\Tutorial\00.VS2019\TX_EAGLE_SUPPLY\TX_Eagle_Supply\TX_Eagle_Supply\Models\IMSDB.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
