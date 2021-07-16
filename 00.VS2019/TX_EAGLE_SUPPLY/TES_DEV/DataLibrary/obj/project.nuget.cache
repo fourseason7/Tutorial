@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "KzwZ0atIbha5dNqZL8UFzQ0JIDSAu2zwJMz7AnmrEDwLORaUj9lPKEXAi6W1r5shffObdUzIGzwXfffmzrIgRg==",
+  "success": true,
+  "projectFilePath": "D:\\GitHub\\Tutorial\\00.VS2019\\TX_EAGLE_SUPPLY\\TES_DEV\\DataLibrary\\DataLibrary.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\gls06912\\.nuget\\packages\\dapper\\2.0.90\\dapper.2.0.90.nupkg.sha512"
+  ],
+  "logs": []
+}

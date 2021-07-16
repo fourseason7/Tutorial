@@ -1,0 +1,8 @@
+D:\GitHub\Tutorial\00.VS2019\TX_EAGLE_SUPPLY\TES_DEV\DataLibrary\bin\Debug\DataLibrary.dll
+D:\GitHub\Tutorial\00.VS2019\TX_EAGLE_SUPPLY\TES_DEV\DataLibrary\bin\Debug\DataLibrary.pdb
+D:\GitHub\Tutorial\00.VS2019\TX_EAGLE_SUPPLY\TES_DEV\DataLibrary\bin\Debug\Dapper.dll
+D:\GitHub\Tutorial\00.VS2019\TX_EAGLE_SUPPLY\TES_DEV\DataLibrary\obj\Debug\DataLibrary.csproj.CoreCompileInputs.cache
+D:\GitHub\Tutorial\00.VS2019\TX_EAGLE_SUPPLY\TES_DEV\DataLibrary\obj\Debug\DataLibrary.csproj.CopyComplete
+D:\GitHub\Tutorial\00.VS2019\TX_EAGLE_SUPPLY\TES_DEV\DataLibrary\obj\Debug\DataLibrary.dll
+D:\GitHub\Tutorial\00.VS2019\TX_EAGLE_SUPPLY\TES_DEV\DataLibrary\obj\Debug\DataLibrary.pdb
+D:\GitHub\Tutorial\00.VS2019\TX_EAGLE_SUPPLY\TES_DEV\DataLibrary\obj\Debug\DataLibrary.csproj.AssemblyReference.cache

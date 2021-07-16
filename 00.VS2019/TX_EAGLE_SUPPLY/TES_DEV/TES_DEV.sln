@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TES_DEV", "TES_DEV\TES_DEV.csproj", "{99C85B3E-53F4-4B5A-B313-957FC5417A95}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLibrary", "DataLibrary\DataLibrary.csproj", "{9A1912A7-0903-4035-AF76-6773378E5FC7}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TESDemoDB", "TESDemoDB\TESDemoDB.sqlproj", "{7F0F3C15-4178-4C93-BB5D-A030BAB09DDD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,16 @@ Global
 		{99C85B3E-53F4-4B5A-B313-957FC5417A95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99C85B3E-53F4-4B5A-B313-957FC5417A95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99C85B3E-53F4-4B5A-B313-957FC5417A95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A1912A7-0903-4035-AF76-6773378E5FC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A1912A7-0903-4035-AF76-6773378E5FC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A1912A7-0903-4035-AF76-6773378E5FC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A1912A7-0903-4035-AF76-6773378E5FC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F0F3C15-4178-4C93-BB5D-A030BAB09DDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F0F3C15-4178-4C93-BB5D-A030BAB09DDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F0F3C15-4178-4C93-BB5D-A030BAB09DDD}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7F0F3C15-4178-4C93-BB5D-A030BAB09DDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F0F3C15-4178-4C93-BB5D-A030BAB09DDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F0F3C15-4178-4C93-BB5D-A030BAB09DDD}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,6 @@
+D:\GitHub\Tutorial\00.VS2019\TX_EAGLE_SUPPLY\TES_DEV\TESDemoDB\bin\Debug\TESDemoDB.dacpac
+D:\GitHub\Tutorial\00.VS2019\TX_EAGLE_SUPPLY\TES_DEV\TESDemoDB\bin\Debug\TESDemoDB.dll
+D:\GitHub\Tutorial\00.VS2019\TX_EAGLE_SUPPLY\TES_DEV\TESDemoDB\bin\Debug\TESDemoDB.pdb
+D:\GitHub\Tutorial\00.VS2019\TX_EAGLE_SUPPLY\TES_DEV\TESDemoDB\obj\Debug\TESDemoDB.sqlproj.AssemblyReference.cache
+D:\GitHub\Tutorial\00.VS2019\TX_EAGLE_SUPPLY\TES_DEV\TESDemoDB\obj\Debug\TESDemoDB.dll
+D:\GitHub\Tutorial\00.VS2019\TX_EAGLE_SUPPLY\TES_DEV\TESDemoDB\obj\Debug\TESDemoDB.pdb
