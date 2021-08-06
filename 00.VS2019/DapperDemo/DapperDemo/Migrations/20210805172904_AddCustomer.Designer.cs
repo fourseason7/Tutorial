@@ -3,14 +3,16 @@ using DapperDemo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DapperDemo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210805172904_AddCustomer")]
+    partial class AddCustomer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,49 +47,25 @@ namespace DapperDemo.Migrations
                     b.ToTable("Companies");
                 });
 
-            modelBuilder.Entity("DapperDemo.Models.Employee", b =>
+            modelBuilder.Entity("DapperDemo.Models.Customer", b =>
                 {
-                    b.Property<int>("EmployeeId")
+                    b.Property<int>("CustomerID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CompanyId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Phone")
+                    b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("CustomerID");
 
-                    b.HasKey("EmployeeId");
-
-                    b.HasIndex("CompanyId");
-
-                    b.ToTable("Employees");
-                });
-
-            modelBuilder.Entity("DapperDemo.Models.Employee", b =>
-                {
-                    b.HasOne("DapperDemo.Models.Company", "Company")
-                        .WithMany("Employees")
-                        .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Company");
-                });
-
-            modelBuilder.Entity("DapperDemo.Models.Company", b =>
-                {
-                    b.Navigation("Employees");
+                    b.ToTable("Customers");
                 });
 #pragma warning restore 612, 618
         }

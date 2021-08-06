@@ -13,9 +13,9 @@ namespace DapperDemo.Controllers
 {
   public class CompaniesController : Controller
   {
-    private readonly ICompanyRepository _compRepo;
+    private readonly ICompanyRepositorySP _compRepo;
 
-    public CompaniesController( ICompanyRepository compRepo)
+    public CompaniesController(ICompanyRepositorySP compRepo)
     {
       _compRepo = compRepo;
     }

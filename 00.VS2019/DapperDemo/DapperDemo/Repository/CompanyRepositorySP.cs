@@ -11,54 +11,38 @@ using System.Threading.Tasks;
 
 namespace DapperDemo.Repository
 {
-    public class CompanyRepository : ICompanyRepository
+    public class CompanyRepositorySP : ICompanyRepositorySP
     {
         private IDbConnection db;
-        public CompanyRepository(IConfiguration configuration)
+        public CompanyRepositorySP(IConfiguration configuration)
         {
             this.db = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
         }
 
         public Company Add(Company company)
         {
-            var sql = @"INSERT INTO Companies
-                   (Name, Address, City, State, PostalCode)
-                  VALUES
-                   (@Name, @Address, @City, @State, @PostalCode);";
+            var parameters = new DynamicParameters();
+            parameters.Add("@CompanyId", 0, DbType.Int32, direction: ParameterDirection.Output);
+            parameters.Add("@Name", company.Name);
+            parameters.Add("@Address", company.Address);
+            parameters.Add("@City", company.City);
+            parameters.Add("@State", company.State);
+            parameters.Add("@PostalCode", company.PostalCode);
 
-            sql = sql + @"SELECT CAST(SCOPE_IDENTITY() as int);";
+            this.db.Execute("usp_AddCompany", parameters, commandType: CommandType.StoredProcedure);
+            company.CompanyId = parameters.Get<int>("CompanyId");
 
-            var id = db.Query<int>(sql, new
-            {
-                company.Name,
-                company.Address,
-                company.City,
-                company.State,
-                company.PostalCode
-            }).Single();
-
-            company.CompanyId = id;
             return company;
-
         }
 
         public Company Find(int id)
         {
-            var sql = @"SELECT *
-                    FROM Companies
-                   WHERE CompanyId = @CompanyId
-              ";
-
-            return db.Query<Company>(sql, new { @CompanyId = id }).Single();
+            return db.Query<Company>("usp_GetCompany", new { CompanyId = id }, commandType: CommandType.StoredProcedure).SingleOrDefault();
         }
 
         public List<Company> GetAll()
         {
-            var sql = @"SELECT *
-                    FROM Companies
-              ";
-
-            return db.Query<Company>(sql).ToList();
+            return db.Query<Company>("usp_GetALLCompany", commandType: CommandType.StoredProcedure).ToList();
         }
 
         public void Remove(int id)
