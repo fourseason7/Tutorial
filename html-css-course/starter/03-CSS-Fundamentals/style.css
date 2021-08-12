@@ -91,3 +91,7 @@ aside {
 body {
   /* background-color: orangered; */
 }
+
+.first-li {
+  font-weight: bold;
+}
